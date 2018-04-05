@@ -25,7 +25,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         encuesta.setOnClickListener(this);
         acerca.setOnClickListener(this);
 
-        //El pepe es un gay noDASDASD el carlito no lo sabe
+        //El pepe es un gay
     }
 
 
