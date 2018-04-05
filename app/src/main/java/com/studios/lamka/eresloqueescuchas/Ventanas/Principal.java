@@ -25,7 +25,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         encuesta.setOnClickListener(this);
         acerca.setOnClickListener(this);
 
-        //ESTA ES LA ULTIMAAAAA YAAAAAAAAAAAAAAAAAAAAAAA
+        //ESTA ES LA ULTIMAAAAA YAAAAAAAAAAAAAAAAAAAAAAASS
     }
 
 
