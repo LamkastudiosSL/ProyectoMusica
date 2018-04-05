@@ -26,7 +26,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         acerca.setOnClickListener(this);
 
         //El pepe es un gay noDASDASD el carlito no lo sabedddDASDASD
-        //aaadddddDDD
+        //aaadddddDDDS
     }
 
 
