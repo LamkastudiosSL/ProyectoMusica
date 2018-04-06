@@ -27,7 +27,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
 
         //El pepe es una marikona
 
-        //hola que haces
+        //hola que haces.
 
         //lebrón es lebronx
     }
