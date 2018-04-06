@@ -10,21 +10,25 @@ public class GestionEncuentas {
 
     private static boolean puedeCambiarActivity=true;
 
-    public static void validarFormulario(Context context,boolean[] camposObligatorios, Class nuevaActividad){
+    public static boolean validarFormulario(Context context,boolean[] camposObligatorios, Class nuevaActividad){
 
         //VALIDAMOS EN EL FORMULARIO SI TODOS LOS CAMPOS OBLIGATORIOS ESTAN PUESTOS,
         // PONEMOS UNA VARIABLE GLOBAL, COMO CAMPOS OBLIGATORIOS A TRUE
         //observa encuesta 1 para entenderlo mejor
 
         for (boolean campo: camposObligatorios){
-            if(!campo)
+            if(!campo) {
                 puedeCambiarActivity = false;
+                break;
+            }
         }
 
         if(puedeCambiarActivity){
             Intent intent = new Intent(context,nuevaActividad);
             context.startActivity(intent);
-        }else Toast.makeText(context,"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
+        }
+
+        return puedeCambiarActivity;
     }
 
     public static boolean comprobarEditVacio(EditText editText){
