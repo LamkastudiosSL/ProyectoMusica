@@ -16,7 +16,7 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
     private Button btnSiguiente,btnAtras;
 
     //TODOS LOS CAMPOS OBLIGAOTORIOS IRAN AQUI, AL PULSAR O RELLENAR UN CAMPO OBLIGATORIO, SE PONDRA A TRUE, LA POSICION DE LA PREGUNTA
-    private boolean[] camposObligatorios={false};
+    private boolean[] camposObligatorios = new boolean[1];
     private EditText nombreyapellidos;
 
 
@@ -27,6 +27,8 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
         //AL PULSAR UN EDDITEXT TE ARREGLA EL FALLO QUE SE TE MUEVE EL LAYOUT
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        camposObligatorios[0]=false;
 
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
@@ -50,14 +52,15 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
         if (v.equals(btnSiguiente)){
 
-            if(nombreyapellidos.getText().length()!=0) camposObligatorios[0]=true;
+            if(!GestionEncuentas.comprobarEditVacio(nombreyapellidos)) camposObligatorios[0]=true;
+            else camposObligatorios[0]=false;
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass()))
-                Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS"+camposObligatorios[0],Toast.LENGTH_SHORT).show();
+            GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass());
         }
         if(v.equals(btnAtras)){
 
         }
-
     }
+
+
 }

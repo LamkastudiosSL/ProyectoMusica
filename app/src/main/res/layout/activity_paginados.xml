@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Ventanas.PaginasEncuesta.EncuestaPaginaDos">
 
+    <Button
+        android:id="@+id/btnatras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="125dp"
+        android:layout_marginTop="98dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
