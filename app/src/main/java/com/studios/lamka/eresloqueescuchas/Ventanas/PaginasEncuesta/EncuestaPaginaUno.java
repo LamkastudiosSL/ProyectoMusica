@@ -28,6 +28,8 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         //AL PULSAR UN EDDITEXT TE ARREGLA EL FALLO QUE SE TE MUEVE EL LAYOUT
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+
+        //se inicializam todos los campos obligatorios en false, si luego se rellena, se vuelve true
         camposObligatorios[0]=false;
 
 
