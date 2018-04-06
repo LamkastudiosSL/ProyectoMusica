@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Ventanas.Acercade" />
-        <activity android:name=".Ventanas.PaginasEncuesta.PaginaUno" />
-        <activity android:name=".Ventanas.PaginasEncuesta.PaginaDos"></activity>
+        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaUno" />
+        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaDos"></activity>
     </application>
 
 </manifest>

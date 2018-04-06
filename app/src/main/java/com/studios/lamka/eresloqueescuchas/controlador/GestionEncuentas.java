@@ -1,12 +1,7 @@
 package com.studios.lamka.eresloqueescuchas.controlador;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-
-import com.studios.lamka.eresloqueescuchas.R;
-import com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta.PaginaDos;
 
 public class GestionEncuentas {
 

@@ -6,7 +6,7 @@ import android.view.WindowManager;
 
 import com.studios.lamka.eresloqueescuchas.R;
 
-public class PaginaDos extends AppCompatActivity {
+public class EncuestaPaginaDos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

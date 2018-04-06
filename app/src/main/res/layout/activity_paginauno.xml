@@ -19,7 +19,7 @@
     android:id="@+id/paginauno"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ventanas.PaginasEncuesta.PaginaUno">
+    tools:context=".Ventanas.PaginasEncuesta.EncuestaPaginaUno">
 
 
         <android.support.constraint.ConstraintLayout

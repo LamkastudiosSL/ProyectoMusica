@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 
-public class PaginaUno extends AppCompatActivity implements View.OnClickListener {
+public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnSiguiente,btnAtras;
 
@@ -53,7 +52,7 @@ public class PaginaUno extends AppCompatActivity implements View.OnClickListener
 
             if(nombreyapellidos.getText().length()!=0) camposObligatorios[0]=true;
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new PaginaDos().getClass()))
+            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass()))
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS"+camposObligatorios[0],Toast.LENGTH_SHORT).show();
         }
         if(v.equals(btnAtras)){
