@@ -54,8 +54,12 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
         if (v.equals(btnSiguiente)){
 
-            if(!GestionEncuentas.comprobarEditVacio(nombreyapellidos)) camposObligatorios[0]=true;
-            else camposObligatorios[0]=false;
+            if(!GestionEncuentas.comprobarEditVacio(nombreyapellidos)){
+                camposObligatorios[0]=true;
+            }
+            else {
+                camposObligatorios[0]=false;
+            }
 
             if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass())){
                Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();

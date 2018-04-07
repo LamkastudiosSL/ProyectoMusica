@@ -18,17 +18,15 @@ public class GestionEncuentas {
 
         for (boolean campo: camposObligatorios){
             if(!campo) {
-                puedeCambiarActivity = false;
-                break;
+                return false;
             }
         }
 
-        if(puedeCambiarActivity){
-            Intent intent = new Intent(context,nuevaActividad);
-            context.startActivity(intent);
-        }
+        Intent intent = new Intent(context,nuevaActividad);
+        context.startActivity(intent);
 
-        return puedeCambiarActivity;
+
+        return true;
     }
 
     public static boolean comprobarEditVacio(EditText editText){
