@@ -98,6 +98,7 @@ public class EncuestaPaginaDos extends AppCompatActivity {
         spPreguntaUno.setAdapter(respuestasUno);
 
 
+
         //Listener del Spinner para Pregunta Dos
         spPreguntaUno.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
