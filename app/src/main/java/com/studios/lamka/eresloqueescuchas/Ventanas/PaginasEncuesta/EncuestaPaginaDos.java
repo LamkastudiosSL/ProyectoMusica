@@ -190,12 +190,8 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass())){
+            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuentaPaginaCuatro().getClass(), "no")){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
-            }
-            else {
-                //Intent i = new Intent(getBaseContext(), EncuestaPaginaUno.class);
-                //startActivity(i);
             }
         }
         if(v.equals(btnAtras)){
@@ -205,7 +201,6 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
     }
 
     public void comprobarPreguntasObigatorias(){
-
 
 
         if(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaUno)) camposObligatorios[0]=true;
