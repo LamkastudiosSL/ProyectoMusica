@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
@@ -16,8 +17,10 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
     private Button btnSiguiente,btnAtras;
 
     //TODOS LOS CAMPOS OBLIGAOTORIOS IRAN AQUI, AL PULSAR O RELLENAR UN CAMPO OBLIGATORIO, SE PONDRA A TRUE, LA POSICION DE LA PREGUNTA
-    private boolean[] camposObligatorios = new boolean[1];
+    private boolean[] camposObligatorios = new boolean[4];
     private EditText nombreyapellidos;
+    private EditText ciudad;
+    private RadioGroup rgSexo,rgedad;
 
 
     @Override
@@ -29,8 +32,6 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
 
-        //se inicializam todos los campos obligatorios en false, si luego se rellena, se vuelve true
-        camposObligatorios[0]=false;
 
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
@@ -38,6 +39,9 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
         //COMPONENTES
         nombreyapellidos = findViewById(R.id.editNombre);
+        ciudad = findViewById(R.id.editciudad);
+        rgSexo = findViewById(R.id.rgsexo);
+        rgedad = findViewById(R.id.rgedad);
 
 
         btnSiguiente.setOnClickListener(this);
@@ -54,12 +58,7 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
         if (v.equals(btnSiguiente)){
 
-            if(!GestionEncuentas.comprobarEditVacio(nombreyapellidos)){
-                camposObligatorios[0]=true;
-            }
-            else {
-                camposObligatorios[0]=false;
-            }
+            comprobarPreguntasObigatorias();
 
             if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass())){
                Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
@@ -68,6 +67,21 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         if(v.equals(btnAtras)){
 
         }
+    }
+
+    public void comprobarPreguntasObigatorias(){
+        if(!GestionEncuentas.comprobarEditVacio(nombreyapellidos)) camposObligatorios[0]=true;
+        else camposObligatorios[0]=false;
+
+        if (!GestionEncuentas.comprobarRadiosVacios(rgedad)) camposObligatorios[1]=true;
+        else camposObligatorios[1] = false;
+
+        if(!GestionEncuentas.comprobarEditVacio(ciudad)) camposObligatorios[2]=true;
+        else camposObligatorios[2]=false;
+
+        if (!GestionEncuentas.comprobarRadiosVacios(rgSexo)) camposObligatorios[3]=true;
+        else camposObligatorios[3] = false;
+
     }
 
 

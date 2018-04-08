@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class GestionEncuentas {
@@ -34,6 +36,15 @@ public class GestionEncuentas {
         return false;
     }
 
+    public static boolean comprobarRadiosVacios(RadioGroup radioGroup){
+
+        if (radioGroup.getCheckedRadioButtonId()==-1){
+            return true;
+        }
+
+        return false;
+
+    }
 
 
 

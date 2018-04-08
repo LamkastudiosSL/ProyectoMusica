@@ -32,7 +32,7 @@
                     style="@style/estiloLabelsPreguntas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1 - Nombre y Apellidos:" />
+                    android:text="1 - Nombre y Apellidos: *" />
 
                 <EditText
                     android:id="@+id/editNombre"
@@ -52,9 +52,10 @@
                     style="@style/estiloLabelsPreguntas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 - ¿Que edad tienes?" />
+                    android:text="2 - ¿Que edad tienes? *" />
 
                 <RadioGroup
+                    android:id="@+id/rgedad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -110,24 +111,31 @@
                     style="@style/estiloLabelsPreguntas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3- Ciudad en la que vives (escribe el nombre completo, sin abreviaturas y con la ortografía correspondiente) " />
+                    android:text="3- Ciudad en la que vives (escribe el nombre completo, sin abreviaturas y con la ortografía correspondiente) * " />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/editciudad"
                     style="@style/edidtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName" />
 
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp" />
+
                 <TextView
                     android:id="@+id/lblpregunta4"
                     style="@style/estiloLabelsPreguntas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 - ¿Que edad tienes?" />
+                    android:text="4 - Sexo *" />
 
                 <RadioGroup
+                    android:id="@+id/rgsexo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -152,7 +160,89 @@
                         android:text="Mujer" />
 
                 </RadioGroup>
+                <TextView
+                    android:id="@+id/lblpregunta5"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp" />
 
+                <TextView
+                    android:id="@+id/espacio5"
+                    style="@style/estiloLabelsPreguntas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5 - Clase social a la que crees que perteneces " />
+
+                <RadioGroup
+                    android:id="@+id/rglase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/espacioprpregunta5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Clase alta: Ingresos económicos muy altos, sois propietarios de numerosas viviendas y vehículos. Os podéis permitir derrochar dinero tranquilamente." />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Clase media-alta: Propietarios de una o varias viviendas y vehículos, padres con buenos empleos fijos y estudios universitarios. Con todas las necesidades básicas cubiertas (educación, vivienda, salud) y os podéis permitir viajes, vacaciones y algunos gastos superfluos." />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Clase media-baja: Propietarios de una vivienda y algún vehículo, padres con empleos más o menos fijo, estudios de primaria o secundaria, con dinero suficiente para tener las necesidades básicas cubiertas (educación, vivienda, salud) pero sin poderse permitir derrochar." />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Clase baja: Ingresos económicos bajos, dificultad para cubrir necesidades básicas (educación, vivienda, salud, ropa...), padres desempleados durante largos periodos y nivel bajo de estudios." />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Clase muy baja: No tiene ingresos económicos, no tiene ni casa ni vehículo ni puede cubrir las necesidades más básicas (alimentación, salud...). Sufre exclusión social." />
+
+                </RadioGroup>
             </LinearLayout>
 
         </ScrollView>
