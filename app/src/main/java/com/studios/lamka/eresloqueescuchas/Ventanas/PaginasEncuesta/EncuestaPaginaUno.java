@@ -14,7 +14,7 @@ import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 
 public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnSiguiente,btnAtras;
+    private Button btnSiguiente;
 
     //TODOS LOS CAMPOS OBLIGAOTORIOS IRAN AQUI, AL PULSAR O RELLENAR UN CAMPO OBLIGATORIO, SE PONDRA A TRUE, LA POSICION DE LA PREGUNTA
     //SI HAY 4 PREGUNTAS OBLIGATORIAS, EL ARRAY SERA DE 4 ELEMENTOS Y ASI
@@ -33,7 +33,6 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
-        btnAtras = findViewById(R.id.btnpaginanaterior);
 
         //COMPONENTES
         nombreyapellidos = findViewById(R.id.editNombre);
@@ -43,7 +42,6 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
 
         btnSiguiente.setOnClickListener(this);
-        btnAtras.setOnClickListener(this);
 
 
 
@@ -58,13 +56,11 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass())){
+            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass(),"no")){
                Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
             }
         }
-        if(v.equals(btnAtras)){
 
-        }
     }
 
     public void comprobarPreguntasObigatorias(){
