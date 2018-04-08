@@ -17,6 +17,7 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
     private Button btnSiguiente,btnAtras;
 
     //TODOS LOS CAMPOS OBLIGAOTORIOS IRAN AQUI, AL PULSAR O RELLENAR UN CAMPO OBLIGATORIO, SE PONDRA A TRUE, LA POSICION DE LA PREGUNTA
+    //SI HAY 4 PREGUNTAS OBLIGATORIAS, EL ARRAY SERA DE 4 ELEMENTOS Y ASI
     private boolean[] camposObligatorios = new boolean[4];
     private EditText nombreyapellidos;
     private EditText ciudad;
