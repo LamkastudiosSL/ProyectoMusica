@@ -1,6 +1,5 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +10,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
-import com.studios.lamka.eresloqueescuchas.Ventanas.Principal;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 
 public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnSiguiente,btnAtras;
+    private Button btnSiguiente;
 
     //TODOS LOS CAMPOS OBLIGAOTORIOS IRAN AQUI, AL PULSAR O RELLENAR UN CAMPO OBLIGATORIO, SE PONDRA A TRUE, LA POSICION DE LA PREGUNTA
     //SI HAY 4 PREGUNTAS OBLIGATORIAS, EL ARRAY SERA DE 4 ELEMENTOS Y ASI
@@ -35,7 +33,6 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
-        btnAtras = findViewById(R.id.btnpaginanaterior);
 
         //COMPONENTES
         nombreyapellidos = findViewById(R.id.editNombre);
@@ -45,7 +42,6 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
 
         btnSiguiente.setOnClickListener(this);
-        btnAtras.setOnClickListener(this);
 
 
 
@@ -60,17 +56,11 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass())){
-               Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
-            } else {
-                //Intent i = new Intent(getBaseContext(), EncuestaPaginaUno.class);
-                //startActivity(i);
+            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass(),"no")){
+               Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
             }
         }
-        if(v.equals(btnAtras)){
-            Intent i = new Intent(getBaseContext(), Principal.class);
-            startActivity(i);
-        }
+
     }
 
     public void comprobarPreguntasObigatorias(){
