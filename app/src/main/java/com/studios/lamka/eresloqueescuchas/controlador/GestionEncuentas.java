@@ -3,10 +3,14 @@ package com.studios.lamka.eresloqueescuchas.controlador;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class GestionEncuentas {
 
@@ -44,6 +48,25 @@ public class GestionEncuentas {
 
         return false;
 
+    }
+
+    public static boolean comprobarCBVacios(CheckBox[] cBoxes){
+
+        for (CheckBox c : cBoxes){
+            if(c.isChecked())
+                return false;
+        }
+
+        return true;
+    }
+
+    public static boolean comprobarSpinnerVacio(Spinner spinner){
+
+        if(spinner.getSelectedItemPosition() == 0){
+            return true;
+        }
+
+        return false;
     }
 
 

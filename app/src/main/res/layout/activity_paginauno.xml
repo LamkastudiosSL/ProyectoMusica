@@ -14,18 +14,17 @@
             android:layout_width="0dp"
             android:layout_height="418dp"
             android:fillViewport="true"
+            android:padding="10dp"
             app:layout_constraintBottom_toTopOf="@+id/layoutmenu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            android:padding="10dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView"
@@ -160,6 +159,7 @@
                         android:text="Mujer" />
 
                 </RadioGroup>
+
                 <TextView
                     android:id="@+id/lblpregunta5"
                     android:layout_width="match_parent"
@@ -256,7 +256,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
 
 
         <Button

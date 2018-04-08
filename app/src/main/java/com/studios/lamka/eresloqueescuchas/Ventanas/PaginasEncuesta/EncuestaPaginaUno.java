@@ -1,5 +1,6 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
+import com.studios.lamka.eresloqueescuchas.Ventanas.Principal;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 
 public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClickListener {
@@ -59,11 +61,15 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
             comprobarPreguntasObigatorias();
 
             if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass())){
-               Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
+            } else {
+                //Intent i = new Intent(getBaseContext(), EncuestaPaginaUno.class);
+                //startActivity(i);
             }
         }
         if(v.equals(btnAtras)){
-
+            Intent i = new Intent(getBaseContext(), Principal.class);
+            startActivity(i);
         }
     }
 

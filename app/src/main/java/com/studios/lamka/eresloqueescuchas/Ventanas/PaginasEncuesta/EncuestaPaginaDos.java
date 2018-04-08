@@ -1,5 +1,6 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,39 +12,30 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.Modelos.ObjetoPruebaPregunta;
+import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 
-public class EncuestaPaginaDos extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnSiguiente, btnAtras;
-    private TextView txtPreguntaUno, txtPreguntaDos, txtPreguntaTres, txtPreguntaCuatro;
-    private Spinner spPreguntaUno;
-    private EditText etRespuestaDos, etRespuestaTres;
+    private boolean[] camposObligatorios = new boolean[6];
+    private TextView txtPreguntaUno, txtPreguntaDos, txtPreguntaTres, txtPreguntaCuatro, txtPreguntaCinco, txtPreguntaSeis, txtPreguntaSiete;
+    private Spinner spPreguntaUno, spPreguntaCinco, spPreguntaSeis;
+    private EditText etRespuestaDos, etRespuestaTres, etRespuestaSiete;
     private CheckBox c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
     private ObjetoPruebaPregunta preguntaUno, preguntaDos, preguntaTres, preguntaCuatro, preguntaCinco, preguntaSeis, preguntaSiete;
     final String[] opcionesPreguntaUno = {"Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
             "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otros, escríbelos en el punto 7", "No escucho música"};
-    final String[] opcionesPreguntaCuatro = {"Clásica" ,
-            "Electrónica" ,
-            "Folk" ,
-            "Funk" ,
-            "Flamenco" ,
-            "Flamenquito" ,
-            "Heavy" ,
-            "Jazz" ,
-            "Musicas del mundo" ,
-            "No, no escucho otros estilos de música" ,
-            "Pop" ,
-            "Punk" ,
-            "Rap" ,
-            "Reggae" ,
-            "Reggaeton" ,
-            "Rock" ,
-            "Soul" ,
-            "Trap" ,
-            "Otro (escribe en el punto 7 cuál)"};
+    final String[] opcionesPreguntaCuatro = {"Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito", "Heavy", "Jazz", "Musicas del mundo",
+            "No, no escucho otros estilos de música", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otro (escribe en el punto 7 cuál)"};
+    final String[] opcionesPreguntaExt = {"Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
+            "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otros"};
+    CheckBox[] cBoxes;
 
 
     @Override
@@ -55,11 +47,16 @@ public class EncuestaPaginaDos extends AppCompatActivity {
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
         btnAtras = findViewById(R.id.btnpaginanaterior);
+        btnSiguiente.setOnClickListener(this);
+        btnAtras.setOnClickListener(this);
         //Declaracion de preguntas
         txtPreguntaUno = findViewById(R.id.txtPreguntaUno);
         txtPreguntaDos = findViewById(R.id.txtPreguntaDos);
         txtPreguntaTres = findViewById(R.id.txtPreguntaTres);
         txtPreguntaCuatro = findViewById(R.id.txtPreguntaCuatro);
+        txtPreguntaCinco = findViewById(R.id.txtPreguntaCinco);
+        txtPreguntaSeis = findViewById(R.id.txtPreguntaSeis);
+        txtPreguntaSiete = findViewById(R.id.txtPreguntaSiete);
         //Declaracion de respuestas
         spPreguntaUno = findViewById(R.id.spPreguntaUno);
         etRespuestaDos = findViewById(R.id.etRespuestaDos);
@@ -83,25 +80,57 @@ public class EncuestaPaginaDos extends AppCompatActivity {
         c17 = findViewById(R.id.checkBox7);
         c18 = findViewById(R.id.checkBox6);
         c19 = findViewById(R.id.checkBox5);
+        spPreguntaCinco = findViewById(R.id.spPreguntaCinco);
+        spPreguntaSeis= findViewById(R.id.spPreguntaSeis);
+        etRespuestaSiete = findViewById(R.id.etRespuestaSiete);
+
+        //Array con todos los checkBox para comprobar si hay alguno seleccionado
+        cBoxes = new CheckBox[]{c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19};
+
 
         //METODO QUE RELLENA LAS PREGUNTAS
         rellenaPregunta();
 
         txtPreguntaUno.setText(preguntaUno.getPregunta());
-        txtPreguntaDos.setText((preguntaDos.getPregunta()));
-        txtPreguntaTres.setText((preguntaTres.getPregunta()));
-        txtPreguntaCuatro.setText((preguntaCuatro.getPregunta()));
+        txtPreguntaDos.setText(preguntaDos.getPregunta());
+        txtPreguntaTres.setText(preguntaTres.getPregunta());
+        txtPreguntaCuatro.setText(preguntaCuatro.getPregunta());
+        txtPreguntaCinco.setText(preguntaCinco.getPregunta());
+        txtPreguntaSeis.setText(preguntaSeis.getPregunta());
+        txtPreguntaSiete.setText(preguntaSiete.getPregunta());
 
         rellenaCheckBox();
 
+        //Adapters de los spinners
         ArrayAdapter<String> respuestasUno = new ArrayAdapter(getBaseContext(),
                 android.R.layout.simple_spinner_item, preguntaUno.getRespuestas());
         spPreguntaUno.setAdapter(respuestasUno);
 
+        ArrayAdapter<String> respuestasCinco = new ArrayAdapter(getBaseContext(),
+                android.R.layout.simple_spinner_item, preguntaCinco.getRespuestas());
+        spPreguntaCinco.setAdapter(respuestasCinco);
+
+        ArrayAdapter<String> respuestasSeis = new ArrayAdapter(getBaseContext(),
+                android.R.layout.simple_spinner_item, preguntaSeis.getRespuestas());
+        spPreguntaSeis.setAdapter(respuestasSeis);
 
 
-        //Listener del Spinner para Pregunta Dos
+        //Listener del Spinner para Pregunta Uno
         spPreguntaUno.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //Aquí deberá guardar las respuesta que se de en la BBDD
+                //Toast.makeText(getBaseContext(), spPreguntaUno.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //Listener del Spinner para Pregunta Cinco
+        spPreguntaCinco.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //Aquí deberá guardar las respuesta que se de en la BBDD
@@ -123,11 +152,14 @@ public class EncuestaPaginaDos extends AppCompatActivity {
         preguntaDos = new ObjetoPruebaPregunta("2- ¿ Por qué te gusta esa música? (qué te dice el estilo, qué te transmite la música, las letras, con qué te sientes identificad@, te gustan l@s cantantes...) *");
         preguntaTres = new ObjetoPruebaPregunta("3- ¿A qué edad has empezado a escucharla? *");
         preguntaCuatro = new ObjetoPruebaPregunta("4- ¿Escuchas otros estilos? Señala cuáles. *", opcionesPreguntaCuatro);
+        preguntaCinco = new ObjetoPruebaPregunta("5- ¿ Cuál crees que es la más popular? *", opcionesPreguntaExt);
+        preguntaSeis = new ObjetoPruebaPregunta("6- ¿Cuál crees que es la que menos se escucha? *", opcionesPreguntaExt);
+        preguntaSiete = new ObjetoPruebaPregunta("7- Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.");
 
 
     }
 
-    private void rellenaCheckBox(){
+    private void rellenaCheckBox() {
 
         c1.setText(preguntaCuatro.getRespuestas()[0]);
         c2.setText(preguntaCuatro.getRespuestas()[1]);
@@ -148,6 +180,52 @@ public class EncuestaPaginaDos extends AppCompatActivity {
         c17.setText(preguntaCuatro.getRespuestas()[16]);
         c18.setText(preguntaCuatro.getRespuestas()[17]);
         c19.setText(preguntaCuatro.getRespuestas()[18]);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v.equals(btnSiguiente)){
+
+            comprobarPreguntasObigatorias();
+
+            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass())){
+                Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                //Intent i = new Intent(getBaseContext(), EncuestaPaginaUno.class);
+                //startActivity(i);
+            }
+        }
+        if(v.equals(btnAtras)){
+            Intent i = new Intent(getBaseContext(), EncuestaPaginaUno.class);
+            startActivity(i);
+        }
+    }
+
+    public void comprobarPreguntasObigatorias(){
+
+
+
+        if(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaUno)) camposObligatorios[0]=true;
+        else camposObligatorios[0]=false;
+
+        if (!GestionEncuentas.comprobarEditVacio(etRespuestaDos)) camposObligatorios[1]=true;
+        else camposObligatorios[1] = false;
+
+        if(!GestionEncuentas.comprobarEditVacio(etRespuestaTres)) camposObligatorios[2]=true;
+        else camposObligatorios[2]=false;
+
+        if (!GestionEncuentas.comprobarCBVacios(cBoxes)) camposObligatorios[3]=true;
+        else camposObligatorios[3] = false;
+
+        if(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaCinco)) camposObligatorios[4]=true;
+        else camposObligatorios[4]=false;
+
+        if(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaSeis)) camposObligatorios[5]=true;
+        else camposObligatorios[5]=false;
+
 
     }
 
