@@ -10,15 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaDos">
+
+        </activity>
+        <activity android:name=".Ventanas.Acercade" />
+        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaUno" >
+
+        </activity>
+        <activity android:name=".Ventanas.Principal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Ventanas.Acercade" />
-        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaUno" />
-        <activity android:name=".Ventanas.Principal"></activity>
     </application>
 
 </manifest>
