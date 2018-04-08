@@ -1,4 +1,4 @@
-package com.studios.lamka.eresloqueescuchas.Ventanas;
+package com.studios.lamka.eresloqueescuchas.Modelos;
 
 import java.util.Arrays;
 

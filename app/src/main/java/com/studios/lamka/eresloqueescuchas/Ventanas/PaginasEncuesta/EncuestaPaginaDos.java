@@ -1,10 +1,8 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.studios.lamka.eresloqueescuchas.R;
-import com.studios.lamka.eresloqueescuchas.Ventanas.ObjetoPruebaPregunta;
+import com.studios.lamka.eresloqueescuchas.Modelos.ObjetoPruebaPregunta;
 
 public class EncuestaPaginaDos extends AppCompatActivity {
 
