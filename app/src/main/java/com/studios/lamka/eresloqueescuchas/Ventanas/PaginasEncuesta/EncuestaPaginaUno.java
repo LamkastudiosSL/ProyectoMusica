@@ -32,9 +32,6 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         //AL PULSAR UN EDDITEXT TE ARREGLA EL FALLO QUE SE TE MUEVE EL LAYOUT
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-
-
-
         btnSiguiente = findViewById(R.id.btnsiguiente);
         btnAtras = findViewById(R.id.btnpaginanaterior);
 
