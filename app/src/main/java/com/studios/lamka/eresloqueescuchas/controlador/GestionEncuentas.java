@@ -35,7 +35,7 @@ public class GestionEncuentas {
         //LA CADENA DE ULTIMA PAGINA VERA SI ES A ULTIMA PGINA DE LA ENCUESTA, PARA PASAR A UNA ACTIVIDAD NUEVA O ABRIR EL DIALOGO
         //PARA ACABAR LA ENCUESTA
 
-        if (!ultimaPagina.equals("si")) {
+        if (ultimaPagina==null) {
             Intent intent = new Intent(context, nuevaActividad);
             context.startActivity(intent);
         }

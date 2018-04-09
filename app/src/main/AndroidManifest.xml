@@ -9,18 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaDos"></activity>
+        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaDos" />
         <activity android:name=".Ventanas.Acercade" />
-        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaUno"></activity>
-        <activity android:name=".Ventanas.PaginasEncuesta.EncuentaPaginaCuatro">
+        <activity android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaUno" />
+        <activity android:name=".Ventanas.PaginasEncuesta.EncuentaPaginaCuatro"></activity>
+        <activity android:name=".Ventanas.Principal">
 
         </activity>
-        <activity android:name=".Ventanas.Principal">
+        <activity android:name=".Ventanas.PaginasEncuesta.PaginaFinal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
