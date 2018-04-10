@@ -188,7 +188,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaTres().getClass(), null)){
+            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaTres().getClass(), false)){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
             }
         }

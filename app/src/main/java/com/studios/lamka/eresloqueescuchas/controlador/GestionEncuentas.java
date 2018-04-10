@@ -37,7 +37,7 @@ public class GestionEncuentas implements ActivityCompat.OnRequestPermissionsResu
         this.mContext = context;
     }
 
-    public static boolean validarFormulario(Context context, boolean[] camposObligatorios, Class nuevaActividad,String ultimaPagina){
+    public static boolean validarFormulario(Context context, boolean[] camposObligatorios, Class nuevaActividad,boolean ultimaPagina){
 
         //VALIDAMOS EN EL FORMULARIO SI TODOS LOS CAMPOS OBLIGATORIOS ESTAN PUESTOS,
         // PONEMOS UNA VARIABLE GLOBAL, COMO CAMPOS OBLIGATORIOS A TRUE
@@ -53,7 +53,7 @@ public class GestionEncuentas implements ActivityCompat.OnRequestPermissionsResu
         //LA CADENA DE ULTIMA PAGINA VERA SI ES A ULTIMA PGINA DE LA ENCUESTA, PARA PASAR A UNA ACTIVIDAD NUEVA O ABRIR EL DIALOGO
         //PARA ACABAR LA ENCUESTA
 
-        if (ultimaPagina==null) {
+        if (ultimaPagina==false) {
             Intent intent = new Intent(context, nuevaActividad);
             context.startActivity(intent);
         }
