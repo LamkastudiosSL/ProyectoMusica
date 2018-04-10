@@ -64,17 +64,11 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
     }
 
     public void comprobarPreguntasObigatorias(){
-        if(!GestionEncuentas.comprobarEditVacio(nombreyapellidos)) camposObligatorios[0]=true;
-        else camposObligatorios[0]=false;
 
-        if (!GestionEncuentas.comprobarRadiosVacios(rgedad)) camposObligatorios[1]=true;
-        else camposObligatorios[1] = false;
-
-        if(!GestionEncuentas.comprobarEditVacio(ciudad)) camposObligatorios[2]=true;
-        else camposObligatorios[2]=false;
-
-        if (!GestionEncuentas.comprobarRadiosVacios(rgSexo)) camposObligatorios[3]=true;
-        else camposObligatorios[3] = false;
+        camposObligatorios[0] = (!GestionEncuentas.comprobarEditVacio(nombreyapellidos)) ? true : false;
+        camposObligatorios[1] = (!GestionEncuentas.comprobarRadiosVacios(rgedad)) ? true : false;
+        camposObligatorios[2] = (!GestionEncuentas.comprobarEditVacio(ciudad))  ? true : false;
+        camposObligatorios[3] = (!GestionEncuentas.comprobarRadiosVacios(rgSexo)) ? true : false;
 
     }
 

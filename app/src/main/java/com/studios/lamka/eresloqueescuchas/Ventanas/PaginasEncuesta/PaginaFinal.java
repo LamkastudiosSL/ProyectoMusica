@@ -59,10 +59,7 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
     }
 
     public void comprobarPreguntasObigatorias(){
-
-        if (!GestionEncuentas.comprobarEditVacio(usuario)) camposObligatorios[0]=true;
-        else camposObligatorios[0] = false;
-
+        camposObligatorios[0] =(!GestionEncuentas.comprobarEditVacio(usuario))?true:false;
 
     }
 }

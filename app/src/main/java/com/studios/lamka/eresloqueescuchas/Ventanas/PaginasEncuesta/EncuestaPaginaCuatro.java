@@ -63,24 +63,15 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
 
     public void comprobarPreguntasObigatorias(){
 
-        if (!GestionEncuentas.comprobarRadiosVacios(popular)) camposObligatorios[0]=true;
-        else camposObligatorios[0] = false;
-        if (!GestionEncuentas.comprobarRadiosVacios(relacionarte)) camposObligatorios[1]=true;
-        else camposObligatorios[1] = false;
-        if (!GestionEncuentas.comprobarRadiosVacios(problemasCasa)) camposObligatorios[2]=true;
-        else camposObligatorios[2] = false;
-        if (!GestionEncuentas.comprobarRadiosVacios(peleas)) camposObligatorios[3]=true;
-        else camposObligatorios[3] = false;
-        if (!GestionEncuentas.comprobarRadiosVacios(fumas)) camposObligatorios[4]=true;
-        else camposObligatorios[4] = false;
-        if (!GestionEncuentas.comprobarRadiosVacios(bebes)) camposObligatorios[5]=true;
-        else camposObligatorios[5] = false;
-        if (!GestionEncuentas.comprobarRadiosVacios(policia)) camposObligatorios[6]=true;
-        else camposObligatorios[6] = false;
-        if(!GestionEncuentas.comprobarEditVacio(deporte)) camposObligatorios[7]=true;
-        else camposObligatorios[7]=false;
-        if (!GestionEncuentas.comprobarRadiosVacios(beso)) camposObligatorios[8]=true;
-        else camposObligatorios[8] = false;
+        camposObligatorios[0] = (!GestionEncuentas.comprobarRadiosVacios(popular))?true:false;
+        camposObligatorios[1] = (!GestionEncuentas.comprobarRadiosVacios(relacionarte))?true:false;
+        camposObligatorios[2] = (!GestionEncuentas.comprobarRadiosVacios(problemasCasa))?true:false;
+        camposObligatorios[3] = (!GestionEncuentas.comprobarRadiosVacios(peleas))?true:false;
+        camposObligatorios[4] = (!GestionEncuentas.comprobarRadiosVacios(fumas))?true:false;
+        camposObligatorios[5] = (!GestionEncuentas.comprobarRadiosVacios(bebes))?true:false;
+        camposObligatorios[6] = (!GestionEncuentas.comprobarRadiosVacios(policia))?true:false;
+        camposObligatorios[7] = (!GestionEncuentas.comprobarEditVacio(deporte))?true:false;
+        camposObligatorios[8] = (!GestionEncuentas.comprobarRadiosVacios(beso))?true:false;
 
     }
 }
