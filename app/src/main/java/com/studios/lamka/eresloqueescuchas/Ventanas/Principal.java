@@ -25,9 +25,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         encuesta.setOnClickListener(this);
         acerca.setOnClickListener(this);
 
-        //El pepe es una marikona
 
-        //lebrón es lebronx
     }
 
 

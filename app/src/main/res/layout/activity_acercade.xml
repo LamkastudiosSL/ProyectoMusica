@@ -4,6 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/fondoencuesta2"
     tools:context=".Ventanas.Acercade">
+
+    <TextView
+        android:id="@+id/textView29"
+        style="@style/estiloLabelsPreguntas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="128dp"
+        android:text="¿ERES LO QUE ESCUCHAS?"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="282dp"
+        android:layout_height="228dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Esta aplicación ha sido creada por Lamka Studios, en colaboracion con el IES ALMUNIA. Esta encuesta, sirve, para saber, si el usuario a través de unas cuantas preguntas, coinciden, sus gustos musicales, con su personalidad. Los resultados de la encuesta, seran enviados a una base de datos, controlada por el IES ALMUNIA "
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:layout_constraintVertical_bias="0.491" />
 
 </android.support.constraint.ConstraintLayout>
