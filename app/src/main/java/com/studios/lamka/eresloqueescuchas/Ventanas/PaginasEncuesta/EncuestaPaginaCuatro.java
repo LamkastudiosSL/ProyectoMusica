@@ -18,6 +18,7 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
     private EditText deporte;
     private RadioGroup popular,relacionarte,problemasCasa,peleas,fumas,bebes,policia,beso;
     private Button btnsigui;
+    private GestionEncuentas ge;
 
 
 
@@ -28,6 +29,8 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
 
         //AL PULSAR UN EDDITEXT TE ARREGLA EL FALLO QUE SE TE MUEVE EL LAYOUT
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        ge = new GestionEncuentas(this);
 
 
         deporte = findViewById(R.id.editdeporte);
@@ -52,9 +55,9 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass(),"si")){
+            if(!ge.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass(),"si")){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
-            }else GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitara hacerse una foto a su cara, ¿Estas de acuerdo?",null/*new PaginaFinal().getClass()*/);
+            }else GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",null/*new PaginaFinal().getClass()*/);
         }
     }
 
