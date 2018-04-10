@@ -35,7 +35,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
             "No, no escucho otros estilos de música", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otro (escribe en el punto 7 cuál)"};
     final String[] opcionesPreguntaExt = {"Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
             "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otros"};
-    CheckBox[] cBoxes;
+    private CheckBox[] cBoxes;
 
 
     @Override
@@ -46,9 +46,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
-        btnAtras = findViewById(R.id.btnpaginanaterior);
         btnSiguiente.setOnClickListener(this);
-        btnAtras.setOnClickListener(this);
         //Declaracion de preguntas
         txtPreguntaUno = findViewById(R.id.txtPreguntaUno);
         txtPreguntaDos = findViewById(R.id.txtPreguntaDos);
@@ -190,14 +188,14 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuentaPaginaCuatro().getClass(), null)){
+            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaTres().getClass(), null)){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
             }
         }
-        if(v.equals(btnAtras)){
+        /*if(v.equals(btnAtras)){
             Intent i = new Intent(getBaseContext(), EncuestaPaginaUno.class);
             startActivity(i);
-        }
+        }*/
     }
 
     public void comprobarPreguntasObigatorias(){
