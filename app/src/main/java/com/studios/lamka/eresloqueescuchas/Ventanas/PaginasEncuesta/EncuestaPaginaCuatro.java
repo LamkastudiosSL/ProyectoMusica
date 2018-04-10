@@ -57,7 +57,7 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
 
             if(!ge.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass(),true)){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
-            }else GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",null/*new PaginaFinal().getClass()*/);
+            }else GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",new PaginaFinal().getClass());
         }
     }
 

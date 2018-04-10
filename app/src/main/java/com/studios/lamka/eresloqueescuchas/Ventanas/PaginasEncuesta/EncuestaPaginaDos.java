@@ -200,24 +200,17 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
     public void comprobarPreguntasObigatorias(){
 
+        camposObligatorios[0] = (!GestionEncuentas.comprobarSpinnerVacio(spPreguntaUno))?true:false;
 
-        if(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaUno)) camposObligatorios[0]=true;
-        else camposObligatorios[0]=false;
+        camposObligatorios[1] = (!GestionEncuentas.comprobarEditVacio(etRespuestaDos))?true:false;
 
-        if (!GestionEncuentas.comprobarEditVacio(etRespuestaDos)) camposObligatorios[1]=true;
-        else camposObligatorios[1] = false;
+        camposObligatorios[2]= (!GestionEncuentas.comprobarEditVacio(etRespuestaTres))?true:false;
 
-        if(!GestionEncuentas.comprobarEditVacio(etRespuestaTres)) camposObligatorios[2]=true;
-        else camposObligatorios[2]=false;
+        camposObligatorios[3]= (!GestionEncuentas.comprobarCBVacios(cBoxes)) ?true:false;
 
-        if (!GestionEncuentas.comprobarCBVacios(cBoxes)) camposObligatorios[3]=true;
-        else camposObligatorios[3] = false;
+        camposObligatorios[4]=(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaCinco))?true:false;
 
-        if(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaCinco)) camposObligatorios[4]=true;
-        else camposObligatorios[4]=false;
-
-        if(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaSeis)) camposObligatorios[5]=true;
-        else camposObligatorios[5]=false;
+        camposObligatorios[5]=(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaSeis))?true:false;
 
 
     }

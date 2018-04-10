@@ -108,6 +108,7 @@ public class GestionEncuentas implements ActivityCompat.OnRequestPermissionsResu
                 /*Intent intent = new Intent(context,nuevaActividad);
                 context.startActivity(intent);*/
 
+                //Pedida de permisos para camara para api superior a 23
                 if (Build.VERSION.SDK_INT >= 23) {
                     String[] PERMISSIONS = {Manifest.permission.CAMERA};
                     if (!hasPermissions(mContext, PERMISSIONS)) {
@@ -126,6 +127,8 @@ public class GestionEncuentas implements ActivityCompat.OnRequestPermissionsResu
 
     }
 
+    //Metodo que se implementa con la interface que estamos implementando
+    //PROBLEMA, ESTO ES UNA CLASE JAVA NO UNA ACTIVITY ASIQUE NO SE EJECUTA EL CALL()
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         //super.onRequestPermissionsResult(requestCode, permissions, grantResults);

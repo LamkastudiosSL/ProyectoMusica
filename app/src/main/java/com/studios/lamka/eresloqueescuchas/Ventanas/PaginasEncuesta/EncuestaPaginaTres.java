@@ -187,20 +187,15 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
     public void comprobarPreguntasObigatorias(){
 
 
-        if(!GestionEncuentas.comprobarRadiosVacios(rgEstudios)) camposObligatorios[0]=true;
-        else camposObligatorios[0]=false;
+        camposObligatorios[0]=(!GestionEncuentas.comprobarRadiosVacios(rgEstudios))?true:false;
 
-        if (!GestionEncuentas.comprobarRadiosVacios(rgBEstudios)) camposObligatorios[1]=true;
-        else camposObligatorios[1] = false;
+        camposObligatorios[1]=(!GestionEncuentas.comprobarRadiosVacios(rgBEstudios))?true:false;
 
-        if (!GestionEncuentas.comprobarRadiosVacios(rgAsignaturas)) camposObligatorios[2]=true;
-        else camposObligatorios[2] = false;
+        camposObligatorios[2]=(!GestionEncuentas.comprobarRadiosVacios(rgAsignaturas))?true: false;
 
-        if (!GestionEncuentas.comprobarRadiosVacios(rgCursoR)) camposObligatorios[3]=true;
-        else camposObligatorios[3] = false;
+        camposObligatorios[3]=(!GestionEncuentas.comprobarRadiosVacios(rgCursoR))?true:false;
 
-        if (!GestionEncuentas.comprobarCBVacios(cBoxes)) camposObligatorios[4]=true;
-        else camposObligatorios[4] = false;
+        camposObligatorios[4]=(!GestionEncuentas.comprobarCBVacios(cBoxes))?true:false;
 
 
     }
