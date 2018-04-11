@@ -1,5 +1,7 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
+import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
+
+import java.io.File;
 
 public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnClickListener{
 
@@ -53,6 +57,8 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         if (v.equals(btnsigui)){
 
+            new creaCarpeta().execute();
+
             comprobarPreguntasObigatorias();
 
             if(!ge.validarFormulario(this,camposObligatorios,null,true)){
@@ -73,5 +79,19 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
         camposObligatorios[7] = (!GestionEncuentas.comprobarEditVacio(deporte))?true:false;
         camposObligatorios[8] = (!GestionEncuentas.comprobarRadiosVacios(beso))?true:false;
 
+    }
+
+    //CREACION DE LA CARPETA DE LA APP
+    private class creaCarpeta extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            File folder = new File(Environment.getExternalStorageDirectory(), "¿ELQE?");
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+            return null;
+        }
     }
 }

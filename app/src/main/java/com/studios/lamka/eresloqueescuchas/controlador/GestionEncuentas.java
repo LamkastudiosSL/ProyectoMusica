@@ -23,15 +23,16 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.studios.lamka.eresloqueescuchas.Ventanas.PantallaCamara;
+
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
-public class GestionEncuentas implements ActivityCompat.OnRequestPermissionsResultCallback{
+public class GestionEncuentas {
 
     private static boolean puedeCambiarActivity=true;
     private static Context mContext;
-    private static final int REQUEST = 1;
 
     public GestionEncuentas(Context context){
         this.mContext = context;
@@ -107,17 +108,8 @@ public class GestionEncuentas implements ActivityCompat.OnRequestPermissionsResu
             public void onClick(DialogInterface dialog, int which) {
                 /*Intent intent = new Intent(context,nuevaActividad);
                 context.startActivity(intent);*/
-
-                //Pedida de permisos para camara para api superior a 23
-                if (Build.VERSION.SDK_INT >= 23) {
-                    String[] PERMISSIONS = {Manifest.permission.CAMERA};
-                    if (!hasPermissions(mContext, PERMISSIONS)) {
-                        ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST);
-                    } else if(hasPermissions(mContext, PERMISSIONS)) {
-                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        mContext.startActivity(intent);
-                    }
-                }
+                Intent intent = new Intent(mContext, PantallaCamara.class);
+                mContext.startActivity(intent);
 
                 dialog.cancel();
             }
@@ -127,34 +119,6 @@ public class GestionEncuentas implements ActivityCompat.OnRequestPermissionsResu
 
     }
 
-    //Metodo que se implementa con la interface que estamos implementando
-    //PROBLEMA, ESTO ES UNA CLASE JAVA NO UNA ACTIVITY ASIQUE NO SE EJECUTA EL CALL()
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        switch (requestCode) {
-            case REQUEST: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    mContext.startActivity(intent);
-                } else {
-                    Toast.makeText(mContext, "Debes conceder los permisos para que la app funcione correctamente", Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-    }
-
-    //Comprueba si ya hay permisos api >=23
-    private static boolean hasPermissions(Context context, String... permissions) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
-            for (String permission : permissions) {
-                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 
 }
