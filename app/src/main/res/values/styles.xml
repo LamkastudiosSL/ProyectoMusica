@@ -15,7 +15,7 @@
     </style>
 
     <style name="edidtext">
-        <item name="android:digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"</item>
+
     </style>
 
 </resources>
