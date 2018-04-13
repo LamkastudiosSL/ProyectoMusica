@@ -64,10 +64,13 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
 
         /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivity(intent);*/
+        capture = findViewById(R.id.capture);
+        capture.setEnabled(false);
 
         start = findViewById(R.id.start);
         start.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View arg0) {
+                capture.setEnabled(true);
                 start_camera();
             }
         });
@@ -79,12 +82,17 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
             }
         });*/
 
-        capture = findViewById(R.id.capture);
+
         capture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 camera.takePicture(null, null, fotoCallback);
 
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 Intent i = new Intent(getBaseContext(), PantallaFotoEstilo.class);
                 startActivity(i);
             }
@@ -234,7 +242,7 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
                 camera.stopPreview();
                 camera.release();
                 camera = null;
-                Toast.makeText(getApplicationContext(), "Image snapshot Done", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Image snapshot Done", Toast.LENGTH_LONG).show();
 
 
             }
