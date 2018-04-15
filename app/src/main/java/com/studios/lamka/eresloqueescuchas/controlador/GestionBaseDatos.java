@@ -85,9 +85,4 @@ public class GestionBaseDatos {
     }
 
 
-    private String GetPreguntasJson(){
-        //LLamada a la base de datos que delvuelve un JSON
-
-        return "";
-    }
 }
