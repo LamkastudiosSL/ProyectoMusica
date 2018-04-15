@@ -23,6 +23,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
 import com.studios.lamka.eresloqueescuchas.Ventanas.PantallaCamara;
 
 import java.util.ArrayList;
@@ -32,13 +33,21 @@ import static android.content.ContentValues.TAG;
 public class GestionEncuentas {
 
     private static boolean puedeCambiarActivity=true;
-    private static Context mContext;
+    private static ArrayList<UsuarioRespuesta> respuestas;
+    private static GestionEncuentas gestionEncuentas;
 
-    public GestionEncuentas(Context context){
-        this.mContext = context;
+    public GestionEncuentas(){
+        respuestas = new ArrayList<>();
     }
 
-    public static boolean validarFormulario(Context context, boolean[] camposObligatorios, Class nuevaActividad,boolean ultimaPagina){
+
+    public static GestionEncuentas getInstance(){
+        //un ejemplo de un if else con ternary (solo se maneja un dato, en este caso el dato que se devuelve)
+        return (gestionEncuentas==null) ? gestionEncuentas = new GestionEncuentas() : gestionEncuentas;
+    }
+
+
+    public static boolean validarFormulario(boolean[] camposObligatorios){
 
         //VALIDAMOS EN EL FORMULARIO SI TODOS LOS CAMPOS OBLIGATORIOS ESTAN PUESTOS,
         // PONEMOS UNA VARIABLE GLOBAL, COMO CAMPOS OBLIGATORIOS A TRUE
@@ -54,10 +63,7 @@ public class GestionEncuentas {
         //LA CADENA DE ULTIMA PAGINA VERA SI ES A ULTIMA PGINA DE LA ENCUESTA, PARA PASAR A UNA ACTIVIDAD NUEVA O ABRIR EL DIALOGO
         //PARA ACABAR LA ENCUESTA
 
-        if (ultimaPagina==false) {
-            Intent intent = new Intent(context, nuevaActividad);
-            context.startActivity(intent);
-        }
+
 
 
         return true;
@@ -108,8 +114,8 @@ public class GestionEncuentas {
             public void onClick(DialogInterface dialog, int which) {
                 /*Intent intent = new Intent(context,nuevaActividad);
                 context.startActivity(intent);*/
-                Intent intent = new Intent(mContext, PantallaCamara.class);
-                mContext.startActivity(intent);
+                Intent intent = new Intent(context, PantallaCamara.class);
+                context.startActivity(intent);
 
                 dialog.cancel();
             }
@@ -119,6 +125,42 @@ public class GestionEncuentas {
 
     }
 
+
+    public static String getvalueRadioButton(Activity activity,RadioGroup radioGroup){
+        int select = radioGroup.getCheckedRadioButtonId();
+
+        RadioButton rb = activity.findViewById(select);
+
+        return rb.getText().toString();
+    }
+
+    public static String getValorSpinner(Spinner spinner){
+        return spinner.getSelectedItem().toString();
+    }
+
+    public static String getValoresCheckboxDados(CheckBox ... checkBoxes){
+
+
+        String valores="";
+        for (CheckBox checkBox: checkBoxes){
+
+            if(checkBox.isChecked())
+                valores+= checkBox.getText().toString()+"    --    ";
+        }
+
+        return valores;
+    }
+
+    public void insertarRespuestasUsuario(String pregutna,String respuesta){
+
+
+        respuestas.add(new UsuarioRespuesta(pregutna,respuesta));
+
+    }
+
+    public static ArrayList<UsuarioRespuesta> getlista(){
+        return respuestas;
+    }
 
 
 }

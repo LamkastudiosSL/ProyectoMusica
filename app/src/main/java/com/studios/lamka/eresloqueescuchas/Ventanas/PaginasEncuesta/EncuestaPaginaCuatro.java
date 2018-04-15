@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -19,10 +20,10 @@ import java.io.File;
 public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnClickListener{
 
     private boolean[] camposObligatorios = new boolean[9];
-    private EditText deporte;
+    private EditText deporte,necesario;
     private RadioGroup popular,relacionarte,problemasCasa,peleas,fumas,bebes,policia,beso;
     private Button btnsigui;
-    private GestionEncuentas ge;
+    private CheckBox chico1,chico2,chico3,chico4,chica1,chica2,chica3,chica4;
 
 
 
@@ -34,7 +35,6 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
         //AL PULSAR UN EDDITEXT TE ARREGLA EL FALLO QUE SE TE MUEVE EL LAYOUT
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        ge = new GestionEncuentas(this);
 
 
         deporte = findViewById(R.id.editdeporte);
@@ -46,6 +46,17 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
         bebes = findViewById(R.id.rgbebida);
         policia = findViewById(R.id.rgpolicia);
         beso = findViewById(R.id.rgbeso);
+
+        necesario = findViewById(R.id.editobservacion);
+
+        chico1 = findViewById(R.id.chico1);
+        chico2 = findViewById(R.id.chico2);
+        chico3 = findViewById(R.id.chico3);
+        chico4 = findViewById(R.id.chico4);
+        chica1 = findViewById(R.id.chica1);
+        chica2 = findViewById(R.id.chica2);
+        chica3 = findViewById(R.id.chica3);
+        chica4 = findViewById(R.id.chica4);
 
         btnsigui = findViewById(R.id.btnsiguiente);
         btnsigui.setOnClickListener(this);
@@ -61,9 +72,12 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
 
             comprobarPreguntasObigatorias();
 
-            if(!ge.validarFormulario(this,camposObligatorios,null,true)){
+            if(!GestionEncuentas.validarFormulario(camposObligatorios)){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
-            }else GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",new PaginaFinal().getClass());
+            }else {
+                guardarRespuestas();
+                GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",new PaginaFinal().getClass());
+            }
         }
     }
 
@@ -93,5 +107,24 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
             }
             return null;
         }
+    }
+
+
+
+    public void guardarRespuestas(){
+
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Te consideras una persona popular?",GestionEncuentas.getvalueRadioButton(this,popular));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Te cuesta relacionarte? ",GestionEncuentas.getvalueRadioButton(this,relacionarte));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Tienes problemas en casa?  ",GestionEncuentas.getvalueRadioButton(this,problemasCasa));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Te has peleado de forma violenta con otras personas? ",GestionEncuentas.getvalueRadioButton(this,peleas));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Fumas habitualmente? ",GestionEncuentas.getvalueRadioButton(this,fumas));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Bebes alcohol con frecuencia?   ",GestionEncuentas.getvalueRadioButton(this,bebes));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Has tenido algún encuentro negativo o no deseado con la policia? ",GestionEncuentas.getvalueRadioButton(this,policia));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Practicas algún deporte?  ",deporte.getText().toString());
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("SÓLO SI ERES CHICO señala la/s opción/es con la que estés de acuerdo.  ",GestionEncuentas.getValoresCheckboxDados(chico1,chico2,chico3,chico4));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("SÓLO SI ERES CHICA señala la/s opción/es con la que estés de acuerdo. ",GestionEncuentas.getValoresCheckboxDados(chica1,chica2 ,chica3,chica4));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Practicas algún deporte?  ",deporte.getText().toString());
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.  ",necesario.getText().toString());
+
     }
 }

@@ -1,5 +1,6 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,8 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
     private boolean[] camposObligatorios = new boolean[4];
     private EditText nombreyapellidos;
     private EditText ciudad;
-    private RadioGroup rgSexo,rgedad;
+    private RadioGroup rgSexo,rgedad,rgclase;
+    private GestionEncuentas gestionEncuentas;
 
 
     @Override
@@ -39,6 +41,8 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         ciudad = findViewById(R.id.editciudad);
         rgSexo = findViewById(R.id.rgsexo);
         rgedad = findViewById(R.id.rgedad);
+        rgclase = findViewById(R.id.rglase);
+
 
 
         btnSiguiente.setOnClickListener(this);
@@ -56,8 +60,11 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass(),false)){
+            if(!GestionEncuentas.validarFormulario(camposObligatorios)){
                Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
+            }else {
+                guardarRespuestas();
+                startActivity(new Intent(EncuestaPaginaUno.this,EncuestaPaginaDos.class));
             }
         }
 
@@ -69,6 +76,16 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         camposObligatorios[1] = (!GestionEncuentas.comprobarRadiosVacios(rgedad)) ? true : false;
         camposObligatorios[2] = (!GestionEncuentas.comprobarEditVacio(ciudad))  ? true : false;
         camposObligatorios[3] = (!GestionEncuentas.comprobarRadiosVacios(rgSexo)) ? true : false;
+
+    }
+
+    public void guardarRespuestas(){
+
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Nombre y Apellidos ",nombreyapellidos.getText().toString());
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Qué edad tienes? ",GestionEncuentas.getvalueRadioButton(this,rgedad));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Ciudad en la que vives",ciudad.getText().toString());
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Sexo",GestionEncuentas.getvalueRadioButton(this,rgSexo));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Clase social a la que crees que perteneces",GestionEncuentas.getvalueRadioButton(this,rgclase));
 
     }
 

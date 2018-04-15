@@ -1,5 +1,6 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
+
+import java.util.ArrayList;
 
 public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClickListener{
 
@@ -83,6 +87,12 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         cBoxes = new CheckBox[]{c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19};
 
 
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add(new String("aa"));
+        list.add(new String("bb"));
+
+
         //METODO QUE RELLENA LAS PREGUNTAS
         rellenaPregunta();
 
@@ -97,17 +107,17 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         rellenaCheckBox();
 
         //Adapters de los spinners
-/*        ArrayAdapter<String> respuestasUno = new ArrayAdapter(getBaseContext(),
-                android.R.layout.simple_spinner_item, preguntaUno.getRespuestas());
+        ArrayAdapter<String> respuestasUno = new ArrayAdapter(getBaseContext(),
+                android.R.layout.simple_spinner_item, list);
         spPreguntaUno.setAdapter(respuestasUno);
 
         ArrayAdapter<String> respuestasCinco = new ArrayAdapter(getBaseContext(),
-                android.R.layout.simple_spinner_item, preguntaCinco.getRespuestas());
+                android.R.layout.simple_spinner_item, list);
         spPreguntaCinco.setAdapter(respuestasCinco);
 
         ArrayAdapter<String> respuestasSeis = new ArrayAdapter(getBaseContext(),
-                android.R.layout.simple_spinner_item, preguntaSeis.getRespuestas());
-        spPreguntaSeis.setAdapter(respuestasSeis);*/
+                android.R.layout.simple_spinner_item,list);
+        spPreguntaSeis.setAdapter(respuestasSeis);
 
 
         //Listener del Spinner para Pregunta Uno
@@ -137,6 +147,11 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
             }
         });
 
+
+
+        for (UsuarioRespuesta usu: GestionEncuentas.getlista()){
+            Toast.makeText(this,usu.toString(),Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -185,8 +200,12 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaTres().getClass(), false)){
+            if(!GestionEncuentas.validarFormulario(camposObligatorios)){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
+            }else{
+                guardarRespuestas();
+                startActivity(new Intent(EncuestaPaginaDos.this,EncuestaPaginaTres.class));
+
             }
         }
         /*if(v.equals(btnAtras)){
@@ -209,8 +228,21 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
         camposObligatorios[5]=(!GestionEncuentas.comprobarSpinnerVacio(spPreguntaSeis))?true:false;
 
+    }
+
+    public void guardarRespuestas(){
+
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Cuál es tu estilo musical favorito? ",GestionEncuentas.getValorSpinner(spPreguntaUno));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿ Por qué te gusta esa música? ",etRespuestaDos.getText().toString());
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿A qué edad has empezado a escucharla? ",etRespuestaTres.getText().toString());
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Escuchas otros estilos?",GestionEncuentas.getValoresCheckboxDados(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿ Cuál crees que es la más popular? ",GestionEncuentas.getValorSpinner(spPreguntaCinco));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Cuál crees que es la que menos se escucha?  ",GestionEncuentas.getValorSpinner(spPreguntaSeis));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.",etRespuestaSiete.getText().toString());
 
     }
+
+
 
 
 }
