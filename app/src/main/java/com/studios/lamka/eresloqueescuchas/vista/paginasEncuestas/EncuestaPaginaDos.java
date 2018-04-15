@@ -14,12 +14,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClickListener{
 
@@ -30,12 +31,25 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
     private EditText etRespuestaDos, etRespuestaTres, etRespuestaSiete;
     private CheckBox c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
     private Pregunta preguntaUno, preguntaDos, preguntaTres, preguntaCuatro, preguntaCinco, preguntaSeis, preguntaSiete;
-    final String[] opcionesPreguntaUno = {"Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
-            "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otros, escríbelos en el punto 7", "No escucho música"};
-    final String[] opcionesPreguntaCuatro = {"Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito", "Heavy", "Jazz", "Musicas del mundo",
-            "No, no escucho otros estilos de música", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otro (escribe en el punto 7 cuál)"};
-    final String[] opcionesPreguntaExt = {"Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
-            "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otros"};
+
+    final String[] estilos = {"Elige","Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
+            "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap"};
+
+    final String[] opcionesPreguntaUno = {
+            "Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
+            "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap",
+            "Otros, escríbelos en el punto 7", "No escucho música"};
+
+    final String[] opcionesPreguntaCuatro = {
+            "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito", "Heavy", "Jazz",
+            "Musicas del mundo", "No, no escucho otros estilos de música", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul",
+            "Trap", "Otro (escribe en el punto 7 cuál)"};
+
+    final String[] opcionesPreguntaExt = {
+            "Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco",
+            "Flamenquito (flamenco mezclado)", "Heavy", "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae",
+            "Reggaeton", "Rock", "Soul", "Trap", "Otros"};
+
     private CheckBox[] cBoxes;
 
 
@@ -48,6 +62,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
         btnSiguiente.setOnClickListener(this);
+
         //Declaracion de preguntas
         txtPreguntaUno = findViewById(R.id.txtPreguntaUno);
         txtPreguntaDos = findViewById(R.id.txtPreguntaDos);
@@ -56,6 +71,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         txtPreguntaCinco = findViewById(R.id.txtPreguntaCinco);
         txtPreguntaSeis = findViewById(R.id.txtPreguntaSeis);
         txtPreguntaSiete = findViewById(R.id.txtPreguntaSiete);
+
         //Declaracion de respuestas
         spPreguntaUno = findViewById(R.id.spPreguntaUno);
         etRespuestaDos = findViewById(R.id.etRespuestaDos);
@@ -87,22 +103,19 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         cBoxes = new CheckBox[]{c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19};
 
 
-        ArrayList<String> list = new ArrayList<>();
-
-        list.add(new String("aa"));
-        list.add(new String("bb"));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(estilos));
 
 
         //METODO QUE RELLENA LAS PREGUNTAS
         rellenaPregunta();
 
-/*        txtPreguntaUno.setText(preguntaUno.getPregunta());
+        txtPreguntaUno.setText(preguntaUno.getPregunta());
         txtPreguntaDos.setText(preguntaDos.getPregunta());
         txtPreguntaTres.setText(preguntaTres.getPregunta());
         txtPreguntaCuatro.setText(preguntaCuatro.getPregunta());
         txtPreguntaCinco.setText(preguntaCinco.getPregunta());
         txtPreguntaSeis.setText(preguntaSeis.getPregunta());
-        txtPreguntaSiete.setText(preguntaSiete.getPregunta());*/
+        txtPreguntaSiete.setText(preguntaSiete.getPregunta());
 
         rellenaCheckBox();
 
@@ -149,29 +162,30 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
 
 
-        for (UsuarioRespuesta usu: GestionEncuentas.getlista()){
+/*        for (UsuarioRespuesta usu: GestionEncuentas.getlista()){
             Toast.makeText(this,usu.toString(),Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
     }
 
     //Esto es una prueba que simula los datos que vienen de la BBDD y se incluyen en un objeto pregunta
     private void rellenaPregunta() {
 
-       /* preguntaUno = new ObjetoPruebaPregunta("1 - ¿Cuál es tu estilo musical favorito? *", opcionesPreguntaUno);
-        preguntaDos = new ObjetoPruebaPregunta("2- ¿ Por qué te gusta esa música? (qué te dice el estilo, qué te transmite la música, las letras, con qué te sientes identificad@, te gustan l@s cantantes...) *");
-        preguntaTres = new ObjetoPruebaPregunta("3- ¿A qué edad has empezado a escucharla? *");
-        preguntaCuatro = new ObjetoPruebaPregunta("4- ¿Escuchas otros estilos? Señala cuáles. *", opcionesPreguntaCuatro);
-        preguntaCinco = new ObjetoPruebaPregunta("5- ¿ Cuál crees que es la más popular? *", opcionesPreguntaExt);
-        preguntaSeis = new ObjetoPruebaPregunta("6- ¿Cuál crees que es la que menos se escucha? *", opcionesPreguntaExt);
-        preguntaSiete = new ObjetoPruebaPregunta("7- Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.");*/
+        preguntaUno = new Pregunta("1 - ¿Cuál es tu estilo musical favorito? *", opcionesPreguntaUno);
+        preguntaDos = new Pregunta("2- ¿ Por qué te gusta esa música? (qué te dice el estilo, qué te transmite la música, las letras, con qué te sientes identificad@, te gustan l@s cantantes...) *");
+        preguntaTres = new Pregunta("3- ¿A qué edad has empezado a escucharla? *");
+        preguntaCuatro = new Pregunta("4- ¿Escuchas otros estilos? Señala cuáles. *", opcionesPreguntaCuatro);
+        preguntaCinco = new Pregunta("5- ¿ Cuál crees que es la más popular? *", opcionesPreguntaExt);
+        preguntaSeis = new Pregunta("6- ¿Cuál crees que es la que menos se escucha? *", opcionesPreguntaExt);
+        preguntaSiete = new Pregunta("7- Si lo ves necesario, añade cualquier cosa que " +
+                "quieras aclarar sobre alguno de los puntos anteriores.");
 
 
     }
 
     private void rellenaCheckBox() {
 
-        /*c1.setText(preguntaCuatro.getRespuestas()[0]);
+        c1.setText(preguntaCuatro.getRespuestas()[0]);
         c2.setText(preguntaCuatro.getRespuestas()[1]);
         c3.setText(preguntaCuatro.getRespuestas()[2]);
         c4.setText(preguntaCuatro.getRespuestas()[3]);
@@ -190,7 +204,6 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         c17.setText(preguntaCuatro.getRespuestas()[16]);
         c18.setText(preguntaCuatro.getRespuestas()[17]);
         c19.setText(preguntaCuatro.getRespuestas()[18]);
-*/
     }
 
     @Override
@@ -208,10 +221,6 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
             }
         }
-        /*if(v.equals(btnAtras)){
-            Intent i = new Intent(getBaseContext(), EncuestaPaginaUno.class);
-            startActivity(i);
-        }*/
     }
 
     public void comprobarPreguntasObigatorias(){

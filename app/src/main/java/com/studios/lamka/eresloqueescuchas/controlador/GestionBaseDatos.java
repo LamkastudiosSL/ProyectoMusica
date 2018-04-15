@@ -46,7 +46,7 @@ public class GestionBaseDatos {
         return (gestion==null) ? gestion=new GestionBaseDatos(context) : gestion;
     }
 
-    public void SendEncuesta(ArrayList<Encuesta> encuestas) throws JSONException
+    public void insertarEncuesta(ArrayList<Encuesta> encuestas) throws JSONException
     {
         for(Encuesta e : encuestas)
         {

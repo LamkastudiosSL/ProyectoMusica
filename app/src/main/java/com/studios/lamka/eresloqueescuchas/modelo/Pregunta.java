@@ -3,40 +3,34 @@ package com.studios.lamka.eresloqueescuchas.modelo;
 
 public class Pregunta {
 
-    private int idpregunta;
-    private String descripcion;
-    private float peso;
+    private String pregunta;
+    private String[] respuestas;
 
     public Pregunta() {
     }
 
-    public Pregunta(int idpregunta, String descripcion, float peso) {
-        this.idpregunta = idpregunta;
-        this.descripcion = descripcion;
-        this.peso = peso;
+    public Pregunta(String pregunta) {
+        this.pregunta = pregunta;
     }
 
-    public int getIdpregunta() {
-        return idpregunta;
+    public Pregunta(String pregunta, String[] respuestas) {
+        this.pregunta = pregunta;
+        this.respuestas = respuestas;
     }
 
-    public void setIdpregunta(int idpregunta) {
-        this.idpregunta = idpregunta;
+    public String getPregunta() {
+        return pregunta;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public String[] getRespuestas() {
+        return respuestas;
     }
 
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) {
-        this.peso = peso;
+    public void setRespuestas(String[] respuestas) {
+        this.respuestas = respuestas;
     }
 }

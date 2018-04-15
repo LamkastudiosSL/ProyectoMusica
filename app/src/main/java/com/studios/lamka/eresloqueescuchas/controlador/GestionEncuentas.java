@@ -11,16 +11,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
+import com.studios.lamka.eresloqueescuchas.modelo.Encuesta;
 import com.studios.lamka.eresloqueescuchas.vista.PantallaCamara;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GestionEncuentas {
 
     private static boolean puedeCambiarActivity=true;
-    private static ArrayList<UsuarioRespuesta> respuestas;
     private static GestionEncuentas gestionEncuentas;
+    private static ArrayList<Encuesta> respuestas;
 
     public GestionEncuentas(){
         respuestas = new ArrayList<>();
@@ -137,14 +138,14 @@ public class GestionEncuentas {
         return valores;
     }
 
-    public void insertarRespuestasUsuario(String pregutna,String respuesta){
+    public void insertarRespuestasUsuario(String pregunta,String respuesta){
 
 
-        respuestas.add(new UsuarioRespuesta(pregutna,respuesta));
+        respuestas.add(new Encuesta(pregunta,respuesta));
 
     }
 
-    public static ArrayList<UsuarioRespuesta> getlista(){
+    public static ArrayList<Encuesta> getRespuestas(){
         return respuestas;
     }
 
