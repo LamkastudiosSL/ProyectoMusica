@@ -50,10 +50,11 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaDos().getClass(),true)) {
+            if(!GestionEncuentas.validarFormulario(camposObligatorios)) {
                 Toast.makeText(getApplicationContext(), "Debe indicar su nombre de usuario", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(getApplicationContext(),"Encuesta enviada!!",Toast.LENGTH_SHORT).show();
+
             }
         }
     }

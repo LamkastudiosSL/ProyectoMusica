@@ -340,25 +340,25 @@
                 android:text="9- SÓLO SI ERES CHICO señala la/s opción/es con la que estés de acuerdo." />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/chico1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Los dos debemos tener libertad para hacer lo que queramos (ropa, amistades, salidas, redes sociales...)" />
 
             <CheckBox
-                android:id="@+id/checkBox3"
+                android:id="@+id/chico2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mi pareja tiene derecho a controlarme (ropa, amistades, salidas, redes sociales...)" />
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/chico3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tengo derecho a controlar a mi pareja (ropa, amistades, salidas, redes sociales...)" />
 
             <CheckBox
-                android:id="@+id/checkBox23"
+                android:id="@+id/chico4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="No tengo derecho a controlar a mi pareja (ropa, amistades, salidas, redes sociales...)" />
@@ -376,25 +376,25 @@
                 android:text="10- SÓLO SI ERES CHICA señala la/s opción/es con la que estés de acuerdo." />
 
             <CheckBox
-                android:id="@+id/checkBox24"
+                android:id="@+id/chica1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="No tengo derecho a controlar a mi pareja (ropa, amistades, salidas, redes sociales...)" />
 
             <CheckBox
-                android:id="@+id/checkBox25"
+                android:id="@+id/chica2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Los dos debemos tener libertad para hacer lo que queramos (ropa, amistades, salidas, redes sociales...)" />
 
             <CheckBox
-                android:id="@+id/checkBox26"
+                android:id="@+id/chica3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mi pareja tiene derecho a controlarme (ropa, amistades, salidas, redes sociales...)" />
 
             <CheckBox
-                android:id="@+id/checkBox27"
+                android:id="@+id/chica4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tengo derecho a controlar a mi pareja (ropa, amistades, salidas, redes sociales...)" />

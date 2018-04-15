@@ -1,5 +1,6 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
@@ -105,6 +107,7 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
         cBoxes = new CheckBox[]{cB, cB2, cB3, cB4};
 
 
+
         //METODO QUE RELLENA LAS PREGUNTAS
         rellenaPregunta();
 
@@ -117,6 +120,9 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
 
         rellenaRadioButton();
 
+        for (UsuarioRespuesta usu: GestionEncuentas.getlista()){
+            Toast.makeText(this,usu.toString(),Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -127,8 +133,12 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
 
             comprobarPreguntasObigatorias();
 
-            if(!GestionEncuentas.validarFormulario(this,camposObligatorios,new EncuestaPaginaCuatro().getClass(), false)){
+            if(!GestionEncuentas.validarFormulario(camposObligatorios)){
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
+            }else {
+                guardarRespuestas();
+                startActivity(new Intent(EncuestaPaginaTres.this,EncuestaPaginaCuatro.class));
+
             }
         }
         /*if(v.equals(btnAtras)){
@@ -197,6 +207,17 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
 
         camposObligatorios[4]=(!GestionEncuentas.comprobarCBVacios(cBoxes))?true:false;
 
+
+    }
+
+    public void guardarRespuestas(){
+
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Nivel de estudios que cursas o, si ya no estudias, el máximo que has cursado ",GestionEncuentas.getvalueRadioButton(this,rgEstudios));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Te van bien los estudios?  ",GestionEncuentas.getvalueRadioButton(this,rgBEstudios));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Cuántas asignaturas has suspendido? ",GestionEncuentas.getvalueRadioButton(this,rgAsignaturas));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Has repetido algún curso? ",GestionEncuentas.getvalueRadioButton(this,rgCursoR));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿ Cuál crees que es la más popular? ",GestionEncuentas.getValoresCheckboxDados(cB,cB2,cB3,cB4));
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.  ",etRespuestaSeis.getText().toString());
 
     }
 }
