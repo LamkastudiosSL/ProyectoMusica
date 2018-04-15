@@ -1,4 +1,4 @@
-package com.studios.lamka.eresloqueescuchas.vista.PaginasEncuesta;
+package com.studios.lamka.eresloqueescuchas.vista.paginasEncuestas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

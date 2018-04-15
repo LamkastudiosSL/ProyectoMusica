@@ -1,4 +1,4 @@
-package com.studios.lamka.eresloqueescuchas.vista.PaginasEncuesta;
+package com.studios.lamka.eresloqueescuchas.vista.paginasEncuestas;
 
 import android.os.AsyncTask;
 import android.os.Environment;

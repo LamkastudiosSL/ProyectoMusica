@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
-import com.studios.lamka.eresloqueescuchas.vista.PaginasEncuesta.EncuestaPaginaUno;
+import com.studios.lamka.eresloqueescuchas.vista.paginasEncuestas.EncuestaPaginaUno;
 
 public class Principal extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 

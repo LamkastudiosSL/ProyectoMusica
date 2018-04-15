@@ -17,19 +17,19 @@
         android:theme="@style/AppTheme"
         android:name=".service.VolleyApplication">
         <activity
-            android:name=".vista.PaginasEncuesta.EncuestaPaginaDos"
+            android:name=".vista.paginasEncuestas.EncuestaPaginaDos"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".vista.PaginasEncuesta.EncuestaPaginaTres"
+            android:name=".vista.paginasEncuestas.EncuestaPaginaTres"
             android:screenOrientation="portrait" />
         <activity
             android:name=".vista.Acercade"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".vista.PaginasEncuesta.EncuestaPaginaUno"
+            android:name=".vista.paginasEncuestas.EncuestaPaginaUno"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".vista.PaginasEncuesta.EncuestaPaginaCuatro"
+            android:name=".vista.paginasEncuestas.EncuestaPaginaCuatro"
             android:screenOrientation="portrait" />
         <activity
             android:name=".vista.PantallaCamara"
@@ -45,7 +45,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".vista.PantallaFotoEstilo"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>
