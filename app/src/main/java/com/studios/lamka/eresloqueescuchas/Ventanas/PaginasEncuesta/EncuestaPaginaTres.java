@@ -12,9 +12,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.studios.lamka.eresloqueescuchas.Modelos.ObjetoPruebaPregunta;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
+import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
 
 public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClickListener{
 
@@ -24,7 +24,7 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
     private RadioGroup rgEstudios, rgBEstudios, rgAsignaturas, rgCursoR;
     private RadioButton rb, rb2, rb3, rb4, rb5, rb6, rb7, rbB, rb2B, rb3B, rbA, rb1A, rb2A, rb3A, rb4A, rb5A, rb6A, rb7A, rb8A, rb9A, rbC, rb2C;
     private CheckBox cB, cB2, cB3, cB4;
-    private ObjetoPruebaPregunta preguntaUno, preguntaDos, preguntaTres, preguntaCuatro, preguntaCinco, preguntaSeis;
+    private Pregunta preguntaUno, preguntaDos, preguntaTres, preguntaCuatro, preguntaCinco, preguntaSeis;
     private EditText etRespuestaSeis;
     private String[] opcionesRespuestaUno = {"Primaria" ,
             "ESO" ,
@@ -108,12 +108,12 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
         //METODO QUE RELLENA LAS PREGUNTAS
         rellenaPregunta();
 
-        txtPreguntaUno.setText(preguntaUno.getPregunta());
+/*        txtPreguntaUno.setText(preguntaUno.getDescripcion());
         txtPreguntaDos.setText(preguntaDos.getPregunta());
         txtPreguntaTres.setText(preguntaTres.getPregunta());
         txtPreguntaCuatro.setText(preguntaCuatro.getPregunta());
         txtPreguntaCinco.setText(preguntaCinco.getPregunta());
-        txtPreguntaSeis.setText(preguntaSeis.getPregunta());
+        txtPreguntaSeis.setText(preguntaSeis.getPregunta());*/
 
         rellenaRadioButton();
 
@@ -140,18 +140,18 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
     //Esto es una prueba que simula los datos que vienen de la BBDD y se incluyen en un objeto pregunta
     private void rellenaPregunta() {
 
-        preguntaUno = new ObjetoPruebaPregunta("1- Nivel de estudios que cursas o, si ya no estudias, el máximo que has cursado. *", opcionesRespuestaUno);
+        /*preguntaUno = new ObjetoPruebaPregunta("1- Nivel de estudios que cursas o, si ya no estudias, el máximo que has cursado. *", opcionesRespuestaUno);
         preguntaDos = new ObjetoPruebaPregunta("2- ¿Te van bien los estudios? *", opcionesRespuestaDos);
         preguntaTres = new ObjetoPruebaPregunta("3- ¿Cuántas asignaturas has suspendido? *", opcionesRespuestaTres);
         preguntaCuatro = new ObjetoPruebaPregunta("4- ¿Has repetido algún curso? *", opcionesRespuestaCuatro);
         preguntaCinco = new ObjetoPruebaPregunta("5- ¿Qué formación musical tienes? *", opcionesRespuestaCinco);
-        preguntaSeis = new ObjetoPruebaPregunta("6- Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.");
+        preguntaSeis = new ObjetoPruebaPregunta("6- Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.");*/
 
     }
 
     private void rellenaRadioButton(){
 
-        rb.setText(preguntaUno.getRespuestas()[0]);
+        /*rb.setText(preguntaUno.getRespuestas()[0]);
         rb2.setText(preguntaUno.getRespuestas()[1]);
         rb3.setText(preguntaUno.getRespuestas()[2]);
         rb4.setText(preguntaUno.getRespuestas()[3]);
@@ -181,7 +181,7 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
         cB2.setText(preguntaCinco.getRespuestas()[1]);
         cB3.setText(preguntaCinco.getRespuestas()[2]);
         cB4.setText(preguntaCinco.getRespuestas()[3]);
-
+*/
     }
 
     public void comprobarPreguntasObigatorias(){

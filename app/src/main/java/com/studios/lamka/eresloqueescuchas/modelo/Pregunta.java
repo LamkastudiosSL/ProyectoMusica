@@ -1,4 +1,4 @@
-package com.studios.lamka.eresloqueescuchas.Modelos;
+package com.studios.lamka.eresloqueescuchas.modelo;
 //Created by chillaso All rights reserved.
 
 public class Pregunta {

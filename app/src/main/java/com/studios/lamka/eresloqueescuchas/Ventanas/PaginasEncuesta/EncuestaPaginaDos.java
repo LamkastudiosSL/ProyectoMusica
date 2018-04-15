@@ -1,6 +1,5 @@
 package com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,10 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
-import com.studios.lamka.eresloqueescuchas.Modelos.ObjetoPruebaPregunta;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
-
-import java.util.ArrayList;
+import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
 
 public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClickListener{
 
@@ -28,7 +25,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
     private Spinner spPreguntaUno, spPreguntaCinco, spPreguntaSeis;
     private EditText etRespuestaDos, etRespuestaTres, etRespuestaSiete;
     private CheckBox c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
-    private ObjetoPruebaPregunta preguntaUno, preguntaDos, preguntaTres, preguntaCuatro, preguntaCinco, preguntaSeis, preguntaSiete;
+    private Pregunta preguntaUno, preguntaDos, preguntaTres, preguntaCuatro, preguntaCinco, preguntaSeis, preguntaSiete;
     final String[] opcionesPreguntaUno = {"Elige", "Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
             "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap", "Otros, escríbelos en el punto 7", "No escucho música"};
     final String[] opcionesPreguntaCuatro = {"Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito", "Heavy", "Jazz", "Musicas del mundo",
@@ -89,18 +86,18 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         //METODO QUE RELLENA LAS PREGUNTAS
         rellenaPregunta();
 
-        txtPreguntaUno.setText(preguntaUno.getPregunta());
+/*        txtPreguntaUno.setText(preguntaUno.getPregunta());
         txtPreguntaDos.setText(preguntaDos.getPregunta());
         txtPreguntaTres.setText(preguntaTres.getPregunta());
         txtPreguntaCuatro.setText(preguntaCuatro.getPregunta());
         txtPreguntaCinco.setText(preguntaCinco.getPregunta());
         txtPreguntaSeis.setText(preguntaSeis.getPregunta());
-        txtPreguntaSiete.setText(preguntaSiete.getPregunta());
+        txtPreguntaSiete.setText(preguntaSiete.getPregunta());*/
 
         rellenaCheckBox();
 
         //Adapters de los spinners
-        ArrayAdapter<String> respuestasUno = new ArrayAdapter(getBaseContext(),
+/*        ArrayAdapter<String> respuestasUno = new ArrayAdapter(getBaseContext(),
                 android.R.layout.simple_spinner_item, preguntaUno.getRespuestas());
         spPreguntaUno.setAdapter(respuestasUno);
 
@@ -110,7 +107,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
         ArrayAdapter<String> respuestasSeis = new ArrayAdapter(getBaseContext(),
                 android.R.layout.simple_spinner_item, preguntaSeis.getRespuestas());
-        spPreguntaSeis.setAdapter(respuestasSeis);
+        spPreguntaSeis.setAdapter(respuestasSeis);*/
 
 
         //Listener del Spinner para Pregunta Uno
@@ -146,20 +143,20 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
     //Esto es una prueba que simula los datos que vienen de la BBDD y se incluyen en un objeto pregunta
     private void rellenaPregunta() {
 
-        preguntaUno = new ObjetoPruebaPregunta("1 - ¿Cuál es tu estilo musical favorito? *", opcionesPreguntaUno);
+       /* preguntaUno = new ObjetoPruebaPregunta("1 - ¿Cuál es tu estilo musical favorito? *", opcionesPreguntaUno);
         preguntaDos = new ObjetoPruebaPregunta("2- ¿ Por qué te gusta esa música? (qué te dice el estilo, qué te transmite la música, las letras, con qué te sientes identificad@, te gustan l@s cantantes...) *");
         preguntaTres = new ObjetoPruebaPregunta("3- ¿A qué edad has empezado a escucharla? *");
         preguntaCuatro = new ObjetoPruebaPregunta("4- ¿Escuchas otros estilos? Señala cuáles. *", opcionesPreguntaCuatro);
         preguntaCinco = new ObjetoPruebaPregunta("5- ¿ Cuál crees que es la más popular? *", opcionesPreguntaExt);
         preguntaSeis = new ObjetoPruebaPregunta("6- ¿Cuál crees que es la que menos se escucha? *", opcionesPreguntaExt);
-        preguntaSiete = new ObjetoPruebaPregunta("7- Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.");
+        preguntaSiete = new ObjetoPruebaPregunta("7- Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.");*/
 
 
     }
 
     private void rellenaCheckBox() {
 
-        c1.setText(preguntaCuatro.getRespuestas()[0]);
+        /*c1.setText(preguntaCuatro.getRespuestas()[0]);
         c2.setText(preguntaCuatro.getRespuestas()[1]);
         c3.setText(preguntaCuatro.getRespuestas()[2]);
         c4.setText(preguntaCuatro.getRespuestas()[3]);
@@ -178,7 +175,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         c17.setText(preguntaCuatro.getRespuestas()[16]);
         c18.setText(preguntaCuatro.getRespuestas()[17]);
         c19.setText(preguntaCuatro.getRespuestas()[18]);
-
+*/
     }
 
     @Override
