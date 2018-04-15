@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.vista.paginasEncuestas.EncuestaPaginaDos;
+import com.studios.lamka.eresloqueescuchas.vista.paginasEncuestas.EncuestaPaginaUno;
 
 public class Principal extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 
@@ -35,7 +36,7 @@ public class Principal extends AppCompatActivity implements ActivityCompat.OnReq
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(Principal.this,EncuestaPaginaDos.class));
+                startActivity(new Intent(Principal.this,EncuestaPaginaUno.class));
             }
         });
         acerca.setOnClickListener(new View.OnClickListener() {

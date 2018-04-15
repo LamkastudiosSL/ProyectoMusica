@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
+import com.studios.lamka.eresloqueescuchas.util.MUtil;
 
 public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClickListener {
 
@@ -85,6 +86,7 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Qué edad tienes? ",GestionEncuentas.getvalueRadioButton(this,rgedad));
         GestionEncuentas.getInstance().insertarRespuestasUsuario("Ciudad en la que vives",ciudad.getText().toString());
         GestionEncuentas.getInstance().insertarRespuestasUsuario("Sexo",GestionEncuentas.getvalueRadioButton(this,rgSexo));
+        MUtil.sexo=GestionEncuentas.getvalueRadioButton(this,rgSexo);
         GestionEncuentas.getInstance().insertarRespuestasUsuario("Clase social a la que crees que perteneces",GestionEncuentas.getvalueRadioButton(this,rgclase));
 
     }

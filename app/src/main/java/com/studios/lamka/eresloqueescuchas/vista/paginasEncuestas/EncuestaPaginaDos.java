@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
+import com.studios.lamka.eresloqueescuchas.util.MUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -172,7 +173,8 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
     private void rellenaPregunta() {
 
         preguntaUno = new Pregunta("1 - ¿Cuál es tu estilo musical favorito? *", opcionesPreguntaUno);
-        preguntaDos = new Pregunta("2- ¿ Por qué te gusta esa música? (qué te dice el estilo, qué te transmite la música, las letras, con qué te sientes identificad@, te gustan l@s cantantes...) *");
+        preguntaDos = new Pregunta("2- ¿ Por qué te gusta esa música? (qué te dice el estilo, qué te transmite la música, " +
+                "las letras, con qué te sientes identificad@, te gustan l@s cantantes...) *");
         preguntaTres = new Pregunta("3- ¿A qué edad has empezado a escucharla? *");
         preguntaCuatro = new Pregunta("4- ¿Escuchas otros estilos? Señala cuáles. *", opcionesPreguntaCuatro);
         preguntaCinco = new Pregunta("5- ¿ Cuál crees que es la más popular? *", opcionesPreguntaExt);
@@ -239,8 +241,9 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
 
     }
 
-    public void guardarRespuestas(){
-
+    public void guardarRespuestas()
+    {
+        MUtil.estilo=GestionEncuentas.getValorSpinner(spPreguntaUno);
         GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Cuál es tu estilo musical favorito? ",GestionEncuentas.getValorSpinner(spPreguntaUno));
         GestionEncuentas.getInstance().insertarRespuestasUsuario("¿ Por qué te gusta esa música? ",etRespuestaDos.getText().toString());
         GestionEncuentas.getInstance().insertarRespuestasUsuario("¿A qué edad has empezado a escucharla? ",etRespuestaTres.getText().toString());
@@ -248,10 +251,5 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         GestionEncuentas.getInstance().insertarRespuestasUsuario("¿ Cuál crees que es la más popular? ",GestionEncuentas.getValorSpinner(spPreguntaCinco));
         GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Cuál crees que es la que menos se escucha?  ",GestionEncuentas.getValorSpinner(spPreguntaSeis));
         GestionEncuentas.getInstance().insertarRespuestasUsuario("Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.",etRespuestaSiete.getText().toString());
-
     }
-
-
-
-
 }
