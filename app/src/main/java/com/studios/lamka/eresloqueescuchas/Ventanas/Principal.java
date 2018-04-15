@@ -21,6 +21,8 @@ import com.studios.lamka.eresloqueescuchas.controlador.GestionBaseDatos;
 import com.studios.lamka.eresloqueescuchas.modelo.Encuesta;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,23 +38,13 @@ public class Principal extends AppCompatActivity implements ActivityCompat.OnReq
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        PRUEBA DE GESTION BASE DE DATOS
-         */
-
-        GestionBaseDatos db = GestionBaseDatos.getInstance(this);
-        //db.fetch("preguntas");
-        ArrayList<Encuesta> list=new ArrayList<Encuesta>();
-        list.add(new Encuesta("prueba1","repuesta1"));
-        list.add(new Encuesta("prueba2","respuest2"));
-        db.SendEncuesta(list);
-
         encuesta = findViewById(R.id.btnencuesta);
         acerca = findViewById(R.id.btnacerca);
 
         encuesta.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 startActivity(new Intent(Principal.this,EncuestaPaginaUno.class));
             }
         });

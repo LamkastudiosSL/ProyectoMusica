@@ -11,6 +11,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.studios.lamka.eresloqueescuchas.modelo.Encuesta;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
 import com.studios.lamka.eresloqueescuchas.service.VolleyApplication;
@@ -23,6 +24,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.android.volley.VolleyLog.TAG;
 
 public class GestionBaseDatos {
 
@@ -43,76 +46,32 @@ public class GestionBaseDatos {
         return (gestion==null) ? gestion=new GestionBaseDatos(context) : gestion;
     }
 
-    public void fetch(String consulta)
+    public void SendEncuesta(ArrayList<Encuesta> encuestas) throws JSONException
     {
-       JsonArrayRequest request = new JsonArrayRequest(
-                Request.Method.GET,MUtil.WEB_URL + consulta,
-                new Response.Listener<JSONArray>()
-                {
-                    @Override
-                    public void onResponse(JSONArray response)
-                    {
-                        Log.i("Success","Se ha conectado");
-                        GetAllPreguntas(response);
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        Log.e("Error de conexion",error.toString());
-                    }
-                }
-        );
-        requestQueue.add(request);
-
-    }
-
-    public List<Pregunta> GetAllPreguntas(JSONArray response)
-    {
-        Log.i("Debug getallpreguntas","dentro");
-        Pregunta[] preguntas;
-
-        preguntas=gson.fromJson(response.toString(),Pregunta[].class);
-
-        //ArrayList<Pregunta> a= (ArrayList<Pregunta>) Arrays.asList(preguntas);
-
-        for (Pregunta p: preguntas)
+        for(Encuesta e : encuestas)
         {
-            Log.i("Debug pregunta",p.getDescripcion());
-        }
-        List<Pregunta> a = Arrays.asList(preguntas);
-        return a;
-    }
-
-
-
-    public void SendEncuesta(ArrayList<Encuesta> encuestas){
-
-        String j =gson.toJson(encuestas);
-        try {
-            JSONArray json= new JSONArray(j);
-
-            JsonArrayRequest request= new JsonArrayRequest(Request.Method.GET, MUtil.WEB_URL + "insertarEncuesta",json, new Response.Listener<JSONArray>() {
-                @Override
-                public void onResponse(JSONArray response) {
-
-                    Log.i("Mensaje: ",response.toString());
-                }
-            },new Response.ErrorListener()
-            {
-                @Override
-                public void onErrorResponse(VolleyError error)
-                {
-                    Log.e("Error de conexion",error.toString());
-                }
-            }
-        );
-
+            String j = gson.toJson(e);
+            JSONObject json = new JSONObject(j);
+            JsonObjectRequest request = new JsonObjectRequest(
+                    Request.Method.POST,
+                    MUtil.WEB_URL + MUtil.INSERT_ENCUESTA,
+                    json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.i(TAG, "onResponse: "+response.toString());
+                        }
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error)
+                        {
+                            Log.e("Error de conexion", error.toString());
+                        }
+                    }
+            );
             requestQueue.add(request);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 }
