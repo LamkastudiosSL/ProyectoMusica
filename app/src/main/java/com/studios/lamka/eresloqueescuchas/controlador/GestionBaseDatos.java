@@ -48,17 +48,15 @@ public class GestionBaseDatos {
 
     public void insertarEncuesta(ArrayList<Encuesta> encuestas) throws JSONException
     {
-        for(Encuesta e : encuestas)
-        {
-            String j = gson.toJson(e);
-            JSONObject json = new JSONObject(j);
-            JsonObjectRequest request = new JsonObjectRequest(
+            String j = gson.toJson(encuestas);
+            JSONArray json = new JSONArray(j);
+            JsonArrayRequest request = new JsonArrayRequest(
                     Request.Method.POST,
                     MUtil.WEB_URL + MUtil.INSERT_ENCUESTA,
                     json,
-                    new Response.Listener<JSONObject>() {
+                    new Response.Listener<JSONArray>() {
                         @Override
-                        public void onResponse(JSONObject response) {
+                        public void onResponse(JSONArray response) {
                             Log.i(TAG, "onResponse: "+response.toString());
                         }
                     },
@@ -72,6 +70,5 @@ public class GestionBaseDatos {
                     }
             );
             requestQueue.add(request);
-        }
     }
 }
