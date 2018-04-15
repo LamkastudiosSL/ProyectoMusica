@@ -18,7 +18,11 @@ import android.widget.Toast;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta.EncuestaPaginaUno;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionBaseDatos;
+import com.studios.lamka.eresloqueescuchas.modelo.Encuesta;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Principal extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 
@@ -37,7 +41,11 @@ public class Principal extends AppCompatActivity implements ActivityCompat.OnReq
          */
 
         GestionBaseDatos db = GestionBaseDatos.getInstance(this);
-        db.fetch("preguntas");
+        //db.fetch("preguntas");
+        ArrayList<Encuesta> list=new ArrayList<Encuesta>();
+        list.add(new Encuesta("prueba1","repuesta1"));
+        list.add(new Encuesta("prueba2","respuest2"));
+        db.SendEncuesta(list);
 
         encuesta = findViewById(R.id.btnencuesta);
         acerca = findViewById(R.id.btnacerca);

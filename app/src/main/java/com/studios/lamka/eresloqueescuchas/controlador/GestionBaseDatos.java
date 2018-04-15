@@ -11,11 +11,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.studios.lamka.eresloqueescuchas.modelo.Encuesta;
 import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
 import com.studios.lamka.eresloqueescuchas.service.VolleyApplication;
 import com.studios.lamka.eresloqueescuchas.util.MUtil;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -85,4 +87,32 @@ public class GestionBaseDatos {
     }
 
 
+
+    public void SendEncuesta(ArrayList<Encuesta> encuestas){
+
+        String j =gson.toJson(encuestas);
+        try {
+            JSONArray json= new JSONArray(j);
+
+            JsonArrayRequest request= new JsonArrayRequest(Request.Method.GET, MUtil.WEB_URL + "insertarEncuesta",json, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+
+                    Log.i("Mensaje: ",response.toString());
+                }
+            },new Response.ErrorListener()
+            {
+                @Override
+                public void onErrorResponse(VolleyError error)
+                {
+                    Log.e("Error de conexion",error.toString());
+                }
+            }
+        );
+
+            requestQueue.add(request);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

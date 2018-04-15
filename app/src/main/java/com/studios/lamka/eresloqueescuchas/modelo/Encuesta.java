@@ -3,32 +3,19 @@ package com.studios.lamka.eresloqueescuchas.modelo;
 
 public class Encuesta {
 
-    private int idusuario, idpregunta;
-    private String respuesta;
+    private String pregunta,respuesta;
 
-    public Encuesta() {
+    public Encuesta(String pregunta, String respuesta) {
+        this.pregunta = pregunta;
+        this.respuesta=respuesta;
     }
 
-    public Encuesta(int idusuario, int idpregunta, String respuesta) {
-        this.idusuario = idusuario;
-        this.idpregunta = idpregunta;
-        this.respuesta = respuesta;
+    public String getPregunta() {
+        return pregunta;
     }
 
-    public int getIdusuario() {
-        return idusuario;
-    }
-
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
-    }
-
-    public int getIdpregunta() {
-        return idpregunta;
-    }
-
-    public void setIdpregunta(int idpregunta) {
-        this.idpregunta = idpregunta;
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
     }
 
     public String getRespuesta() {
