@@ -72,7 +72,7 @@ public class PantallaFotoEstilo extends Activity {
         player.setVolume(100, 100);
         player.start();
 
-
+/*
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
 
@@ -85,6 +85,7 @@ public class PantallaFotoEstilo extends Activity {
             }
 
         }, 25000);
+        */
     }
 
     @Override

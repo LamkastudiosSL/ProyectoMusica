@@ -101,7 +101,7 @@ public class GestionEncuentas {
             public void onClick(DialogInterface dialog, int which) {
                 /*Intent intent = new Intent(context,nuevaActividad);
                 context.startActivity(intent);*/
-                Intent intent = new Intent(context, PantallaCamara.class);
+                Intent intent = new Intent(context,nuevaActividad);
                 context.startActivity(intent);
 
                 dialog.cancel();

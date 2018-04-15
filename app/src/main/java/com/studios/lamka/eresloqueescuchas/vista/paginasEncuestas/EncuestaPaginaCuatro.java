@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
 
@@ -123,7 +124,7 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
         GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Practicas algún deporte?  ",deporte.getText().toString());
         GestionEncuentas.getInstance().insertarRespuestasUsuario("SÓLO SI ERES CHICO señala la/s opción/es con la que estés de acuerdo.  ",GestionEncuentas.getValoresCheckboxDados(chico1,chico2,chico3,chico4));
         GestionEncuentas.getInstance().insertarRespuestasUsuario("SÓLO SI ERES CHICA señala la/s opción/es con la que estés de acuerdo. ",GestionEncuentas.getValoresCheckboxDados(chica1,chica2 ,chica3,chica4));
-        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Practicas algún deporte?  ",deporte.getText().toString());
+        GestionEncuentas.getInstance().insertarRespuestasUsuario("¿Qué te parece esta foto?  ",GestionEncuentas.getvalueRadioButton(this,beso));
         GestionEncuentas.getInstance().insertarRespuestasUsuario("Si lo ves necesario, añade cualquier cosa que quieras aclarar sobre alguno de los puntos anteriores.  ",necesario.getText().toString());
 
     }
