@@ -64,7 +64,7 @@ public class PantallaFotoEstilo extends Activity {
         Drawable[] layers = new Drawable[2];
         layers[0] = bitmapDrawable;
         //Esta es la imagen que va a ir variando segun lo que elija
-        layers[1] = r.getDrawable(R.mipmap.punk);
+        layers[1] = r.getDrawable(R.mipmap.rock);
         LayerDrawable layerDrawable = new LayerDrawable(layers);
         layerDrawable.setLayerInset(0, (int) (width * 0.215), (int) -(height * 0.03), (int) (width * 0.32), (int) (height * 0.95));
         layerDrawable.setLayerSize(0, (int) (width * 1), (int) (height * 0.7));
@@ -72,7 +72,7 @@ public class PantallaFotoEstilo extends Activity {
         testimage.setImageDrawable(layerDrawable);
 
         //Esta es la cancion que va a ir variando segun lo que elija
-        player = MediaPlayer.create(this, R.raw.punk);
+        player = MediaPlayer.create(this, R.raw.rock);
         player.setLooping(true); // Set looping
         player.setVolume(100, 100);
         player.start();

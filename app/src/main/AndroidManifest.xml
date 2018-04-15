@@ -30,7 +30,7 @@
             android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaCuatro"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ventanas.Principal"
+            android:name=".Ventanas.PantallaCamara"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Ventanas.PantallaCamara"
+            android:name=".Ventanas.Principal"
             android:screenOrientation="portrait" />
         <activity android:name=".Ventanas.PantallaFotoEstilo"
             android:screenOrientation="portrait"></activity>

@@ -86,7 +86,9 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
         capture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                capture.setEnabled(false);
                 camera.takePicture(null, null, fotoCallback);
+
 
                 try {
                     Thread.sleep(500);
