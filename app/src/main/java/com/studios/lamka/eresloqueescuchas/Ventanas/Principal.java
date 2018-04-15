@@ -36,8 +36,8 @@ public class Principal extends AppCompatActivity implements ActivityCompat.OnReq
         PRUEBA DE GESTION BASE DE DATOS
          */
 
-        GestionBaseDatos db = GestionBaseDatos.getInstance();
-        db.fetch("preguntas",Pregunta.class);
+        GestionBaseDatos db = GestionBaseDatos.getInstance(this);
+        db.fetch("preguntas");
 
         encuesta = findViewById(R.id.btnencuesta);
         acerca = findViewById(R.id.btnacerca);
