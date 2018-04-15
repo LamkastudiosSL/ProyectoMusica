@@ -1,12 +1,10 @@
-package com.studios.lamka.eresloqueescuchas.Ventanas;
+package com.studios.lamka.eresloqueescuchas.vista;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,15 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
-import com.studios.lamka.eresloqueescuchas.Ventanas.PaginasEncuesta.EncuestaPaginaUno;
-import com.studios.lamka.eresloqueescuchas.controlador.GestionBaseDatos;
-import com.studios.lamka.eresloqueescuchas.modelo.Encuesta;
-import com.studios.lamka.eresloqueescuchas.modelo.Pregunta;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.studios.lamka.eresloqueescuchas.vista.PaginasEncuesta.EncuestaPaginaUno;
 
 public class Principal extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 

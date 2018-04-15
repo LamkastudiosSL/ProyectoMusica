@@ -1,4 +1,4 @@
-package com.studios.lamka.eresloqueescuchas.Ventanas;
+package com.studios.lamka.eresloqueescuchas.vista;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -6,36 +6,26 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.studios.lamka.eresloqueescuchas.R;
 
 import android.app.Activity;
 import android.hardware.Camera;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
 

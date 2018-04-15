@@ -17,26 +17,26 @@
         android:theme="@style/AppTheme"
         android:name=".service.VolleyApplication">
         <activity
-            android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaDos"
+            android:name=".vista.PaginasEncuesta.EncuestaPaginaDos"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaTres"
+            android:name=".vista.PaginasEncuesta.EncuestaPaginaTres"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ventanas.Acercade"
+            android:name=".vista.Acercade"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaUno"
+            android:name=".vista.PaginasEncuesta.EncuestaPaginaUno"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ventanas.PaginasEncuesta.EncuestaPaginaCuatro"
+            android:name=".vista.PaginasEncuesta.EncuestaPaginaCuatro"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ventanas.PantallaCamara"
+            android:name=".vista.PantallaCamara"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Ventanas.Principal"
+        <activity android:name=".vista.Principal"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +44,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Ventanas.PantallaFotoEstilo"
+        <activity android:name=".vista.PantallaFotoEstilo"
             android:screenOrientation="portrait"></activity>
     </application>
 

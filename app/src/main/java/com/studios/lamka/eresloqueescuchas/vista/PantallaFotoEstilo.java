@@ -1,4 +1,4 @@
-package com.studios.lamka.eresloqueescuchas.Ventanas;
+package com.studios.lamka.eresloqueescuchas.vista;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,18 +12,13 @@ import android.media.MediaPlayer;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.R;
-
-import java.io.File;
 
 public class PantallaFotoEstilo extends Activity {
 

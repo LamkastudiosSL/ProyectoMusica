@@ -1,34 +1,20 @@
 package com.studios.lamka.eresloqueescuchas.controlador;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.hardware.Camera;
-import android.os.Build;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.text.InputType;
-import android.text.TextUtils;
-import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
-import com.studios.lamka.eresloqueescuchas.Ventanas.PantallaCamara;
+import com.studios.lamka.eresloqueescuchas.vista.PantallaCamara;
 
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
 
 public class GestionEncuentas {
 
