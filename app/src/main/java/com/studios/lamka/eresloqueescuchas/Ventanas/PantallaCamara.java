@@ -89,12 +89,13 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
                 camera.takePicture(null, null, fotoCallback);
 
                 try {
-                    Thread.sleep(300);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 Intent i = new Intent(getBaseContext(), PantallaFotoEstilo.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -171,7 +172,7 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
 
 
     //PARAMETROS DEFINIDOS PARA LA CAMARA
-    protected void configureCameraParameters(Camera.Parameters cameraParams, boolean portrait) {
+    /*protected void configureCameraParameters(Camera.Parameters cameraParams, boolean portrait) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
             if (portrait) {
                 cameraParams.set(CAMERA_PARAM_ORIENTATION, CAMERA_PARAM_PORTRAIT);
@@ -210,7 +211,7 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
         }
 
         camera.setParameters(cameraParams);
-    }
+    }*/
 
 
     public boolean isPortrait() {
@@ -270,6 +271,11 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
 
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
 
 }
 
