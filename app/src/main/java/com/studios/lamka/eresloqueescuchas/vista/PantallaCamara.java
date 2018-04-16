@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.os.Bundle;
 
 import com.studios.lamka.eresloqueescuchas.R;
+import com.studios.lamka.eresloqueescuchas.vista.paginasEncuestas.PaginaFinal;
 
 import android.app.Activity;
 import android.hardware.Camera;
@@ -85,7 +86,7 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent i = new Intent(getBaseContext(), PantallaFotoEstilo.class);
+                Intent i = new Intent(getBaseContext(), PaginaFinal.class);
                 startActivity(i);
                 finish();
             }

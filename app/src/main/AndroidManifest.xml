@@ -44,8 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vista.PantallaFotoEstilo"
-            android:screenOrientation="portrait"></activity>
         <activity android:name=".vista.paginasEncuestas.PaginaFinal"></activity>
 
     </application>

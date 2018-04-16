@@ -57,7 +57,7 @@ public class GestionBaseDatos {
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
-                            Log.i(TAG, "onResponse: "+response.toString());
+                            Log.i("Success","Encuesta enviada");
                         }
                     },
                     new Response.ErrorListener()

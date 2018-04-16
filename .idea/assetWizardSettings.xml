@@ -34,6 +34,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="b4edf9" />
                                       <entry key="foregroundImage" value="$USER_HOME$/Imágenes/clavedesol.png" />
                                     </map>
                                   </option>

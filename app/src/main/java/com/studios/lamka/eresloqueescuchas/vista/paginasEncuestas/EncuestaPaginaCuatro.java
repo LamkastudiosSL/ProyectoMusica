@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.studios.lamka.eresloqueescuchas.Modelos.UsuarioRespuesta;
 import com.studios.lamka.eresloqueescuchas.R;
 import com.studios.lamka.eresloqueescuchas.controlador.GestionEncuentas;
+import com.studios.lamka.eresloqueescuchas.vista.PantallaCamara;
 
 import java.io.File;
 
@@ -77,7 +77,7 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
             }else {
                 guardarRespuestas();
-                GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",new PaginaFinal().getClass());
+                GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",new PantallaCamara().getClass());
             }
         }
     }
