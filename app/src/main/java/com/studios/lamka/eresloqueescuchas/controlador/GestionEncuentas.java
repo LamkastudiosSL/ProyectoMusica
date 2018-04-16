@@ -115,10 +115,14 @@ public class GestionEncuentas {
 
     public static String getvalueRadioButton(Activity activity,RadioGroup radioGroup){
         int select = radioGroup.getCheckedRadioButtonId();
-
-        RadioButton rb = activity.findViewById(select);
-
-        return rb.getText().toString();
+        //Comprobamos que tenemos algun ID
+        if(select > 0 && select != null)
+        {
+            RadioButton rb = activity.findViewById(select);
+            return rb.getText().toString();
+        }
+        else
+            return "";
     }
 
     public static String getValorSpinner(Spinner spinner){
