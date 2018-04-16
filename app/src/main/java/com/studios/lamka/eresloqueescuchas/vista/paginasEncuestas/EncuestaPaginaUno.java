@@ -87,7 +87,9 @@ public class EncuestaPaginaUno extends AppCompatActivity implements View.OnClick
         GestionEncuentas.getInstance().insertarRespuestasUsuario("Ciudad en la que vives",ciudad.getText().toString());
         GestionEncuentas.getInstance().insertarRespuestasUsuario("Sexo",GestionEncuentas.getvalueRadioButton(this,rgSexo));
         MUtil.sexo=GestionEncuentas.getvalueRadioButton(this,rgSexo);
-        GestionEncuentas.getInstance().insertarRespuestasUsuario("Clase social a la que crees que perteneces",GestionEncuentas.getvalueRadioButton(this,rgclase));
+        //Comprobamos que nos devuelve algo y no esá vacio
+        if(GestionEncuestas.getvalueRadioButton(this,rgclase) != "")
+            GestionEncuentas.getInstance().insertarRespuestasUsuario("Clase social a la que crees que perteneces",GestionEncuentas.getvalueRadioButton(this,rgclase));
 
     }
 
