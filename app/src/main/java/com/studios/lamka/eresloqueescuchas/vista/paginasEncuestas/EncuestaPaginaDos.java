@@ -3,6 +3,7 @@ package com.studios.lamka.eresloqueescuchas.vista.paginasEncuestas;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +34,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
     private EditText etRespuestaDos, etRespuestaTres, etRespuestaSiete;
     private CheckBox c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19;
     private Pregunta preguntaUno, preguntaDos, preguntaTres, preguntaCuatro, preguntaCinco, preguntaSeis, preguntaSiete;
+    private ScrollView sV;
 
     final String[] estilos = {"Elige","Clásica", "Electrónica", "Folk", "Funk", "Flamenco", "Flamenquito (flamenco mezclado)", "Heavy",
             "Jazz", "Musicas del mundo", "Pop", "Punk", "Rap", "Reggae", "Reggaeton", "Rock", "Soul", "Trap"};
@@ -60,6 +63,8 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_paginados);
         //AL PULSAR UN EDDITEXT TE ARREGLA EL FALLO QUE SE TE MUEVE EL LAYOUT
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+
 
         btnSiguiente = findViewById(R.id.btnsiguiente);
         btnSiguiente.setOnClickListener(this);
@@ -103,6 +108,25 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
         //Array con todos los checkBox para comprobar si hay alguno seleccionado
         cBoxes = new CheckBox[]{c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19};
 
+        sV = findViewById(R.id.scrollView2);
+
+        sV.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (etRespuestaDos.hasFocus()) {
+                    etRespuestaDos.clearFocus();
+                }
+                if (etRespuestaTres.hasFocus()) {
+                    etRespuestaTres.clearFocus();
+                }
+                if (etRespuestaSiete.hasFocus()) {
+                    etRespuestaSiete.clearFocus();
+                }
+
+                return false;
+            }
+        });
+
+
 
         ArrayList<String> list = new ArrayList<>(Arrays.asList(estilos));
 
@@ -139,7 +163,7 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //Aquí deberá guardar las respuesta que se de en la BBDD
-                //Toast.makeText(getBaseContext(), spPreguntaUno.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                quitarFocus();
             }
 
             @Override
@@ -153,6 +177,21 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //Aquí deberá guardar las respuesta que se de en la BBDD
+                quitarFocus();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //Listener del Spinner para Pregunta Seis
+        spPreguntaSeis.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                quitarFocus();
             }
 
             @Override
@@ -167,6 +206,18 @@ public class EncuestaPaginaDos extends AppCompatActivity implements View.OnClick
             Toast.makeText(this,usu.toString(),Toast.LENGTH_SHORT).show();
         }*/
 
+    }
+
+    public void quitarFocus(){
+        if (etRespuestaDos.hasFocus()) {
+            etRespuestaDos.clearFocus();
+        }
+        if (etRespuestaTres.hasFocus()) {
+            etRespuestaTres.clearFocus();
+        }
+        if (etRespuestaSiete.hasFocus()) {
+            etRespuestaSiete.clearFocus();
+        }
     }
 
     //Esto es una prueba que simula los datos que vienen de la BBDD y se incluyen en un objeto pregunta

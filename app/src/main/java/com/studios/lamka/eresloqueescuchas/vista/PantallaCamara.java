@@ -82,7 +82,7 @@ public class PantallaCamara extends Activity implements SurfaceHolder.Callback {
 
 
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(600);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

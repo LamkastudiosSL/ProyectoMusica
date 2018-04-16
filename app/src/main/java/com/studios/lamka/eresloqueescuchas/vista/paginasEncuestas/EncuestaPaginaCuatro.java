@@ -77,7 +77,7 @@ public class EncuestaPaginaCuatro extends AppCompatActivity implements View.OnCl
                 Toast.makeText(getApplicationContext(),"DEBE DE RELLENAR TODOS LOS CAMPOPS OBLIGATORIOS",Toast.LENGTH_SHORT).show();
             }else {
                 guardarRespuestas();
-                GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación necesitará hacerse una foto de su cara, ¿Estas de acuerdo?",new PantallaCamara().getClass());
+                GestionEncuentas.mostrarDialogo(EncuestaPaginaCuatro.this,"A continuación deberá hacerse una foto, ¿Estas de acuerdo?",new PantallaCamara().getClass());
             }
         }
     }

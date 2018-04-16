@@ -34,11 +34,11 @@ import java.util.ArrayList;
 
 public class PaginaFinal extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText telefono,usuario,email;
-    private Button btnEnviar;
+
     private WebView webView;
     private MediaPlayer player;
-    private boolean[] camposObligatorios = new boolean[1];
+    private Button btnSiguiente;
+
     int imagen;
     int musica;
 
@@ -50,12 +50,7 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
         //Obtener los resources segun las respuestas
         obtenerResources();
 
-        btnEnviar = findViewById(R.id.btnenviar);
-        telefono = findViewById(R.id.edittelefono);
-        email = findViewById(R.id.editemail);
-        usuario = findViewById(R.id.editusuario);
-
-        btnEnviar.setOnClickListener(this);
+        btnSiguiente = findViewById(R.id.btnSiguiente);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -93,12 +88,13 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
         player.setVolume(100, 100);
         player.start();
 
+
     }
 
     @Override
     public void onBackPressed() {
         finishAffinity();
-        startActivity(new Intent(getApplicationContext(),Principal.class));
+        startActivity(new Intent(getApplicationContext(), Principal.class));
     }
 
     @Override
@@ -108,46 +104,14 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.equals(btnEnviar)){
 
-            comprobarPreguntasObigatorias();
-
-            if(!GestionEncuentas.validarFormulario(camposObligatorios)) {
-                Toast.makeText(getApplicationContext(), "Debe indicar su nombre de usuario", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                ArrayList<Encuesta> encuestas = GestionEncuentas.getRespuestas();
-                try
-                {
-                    GestionBaseDatos.getInstance(getApplicationContext()).insertarEncuesta(encuestas);
-                }
-                catch (JSONException e)
-                {
-                    e.printStackTrace();
-                    Toast.makeText(this, "Error al enviar la encuesta", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(getApplicationContext(),"¡¡Encuesta enviada!!",Toast.LENGTH_SHORT).show();
-
-            }
-        }
-    }
-
-    public void comprobarPreguntasObigatorias(){
-        camposObligatorios[0] =(!GestionEncuentas.comprobarEditVacio(usuario))?true:false;
-    }
-
-    private void obtenerResources()
-    {
+    private void obtenerResources() {
         String sexo = MUtil.sexo.toLowerCase();
         String estilo = MUtil.estilo.toLowerCase();
 
-        switch (estilo)
-        {
+        switch (estilo) {
             case "clásica":
-                if(sexo.equals("hombre"))
+                if (sexo.equals("hombre"))
                     imagen = R.mipmap.clasica;
                 else
                     imagen = R.mipmap.clasicam;
@@ -162,7 +126,7 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
                 musica = R.raw.folk;
                 break;
             case "funk":
-                if(sexo.equals("hombre"))
+                if (sexo.equals("hombre"))
                     imagen = R.mipmap.funky;
                 else
                     imagen = R.mipmap.funkym;
@@ -189,7 +153,7 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
                 musica = R.raw.musicamundo;
                 break;
             case "pop":
-                if(sexo.equals("hombre"))
+                if (sexo.equals("hombre"))
                     imagen = R.mipmap.pop;
                 else
                     imagen = R.mipmap.popm;
@@ -208,7 +172,7 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
                 musica = R.raw.reggae;
                 break;
             case "reggaeton":
-                if(sexo.equals("hombre"))
+                if (sexo.equals("hombre"))
                     imagen = R.mipmap.reggaeton;
                 else
                     imagen = R.mipmap.reggaetonm;
@@ -223,13 +187,47 @@ public class PaginaFinal extends AppCompatActivity implements View.OnClickListen
                 musica = R.raw.soul;
                 break;
             case "trap":
-                if(sexo.equals("hombre"))
+                if (sexo.equals("hombre"))
                     imagen = R.mipmap.trap;
                 else
                     imagen = R.mipmap.trapm;
                 musica = R.raw.trap;
                 break;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+
+
+            /*comprobarPreguntasObigatorias();
+
+            if(!GestionEncuentas.validarFormulario(camposObligatorios)) {
+                Toast.makeText(getApplicationContext(), "Debe indicar su nombre de usuario", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {*/
+            ArrayList<Encuesta> encuestas = GestionEncuentas.getRespuestas();
+            try {
+                GestionBaseDatos.getInstance(getApplicationContext()).insertarEncuesta(encuestas);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Error al enviar la encuesta", Toast.LENGTH_SHORT).show();
+            }
+            Toast.makeText(getApplicationContext(), "¡¡Encuesta enviada!!", Toast.LENGTH_SHORT).show();
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Intent i = new Intent(getBaseContext(), Principal.class);
+            startActivity(i);
+            finish();
+
+            //}
+
     }
 
 }

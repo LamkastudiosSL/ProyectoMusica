@@ -116,7 +116,7 @@ public class GestionEncuentas {
     public static String getvalueRadioButton(Activity activity,RadioGroup radioGroup){
         int select = radioGroup.getCheckedRadioButtonId();
         //Comprobamos que tenemos algun ID
-        if(select > 0 && select != null)
+        if(select > 0)
         {
             RadioButton rb = activity.findViewById(select);
             return rb.getText().toString();

@@ -175,14 +175,15 @@ public class EncuestaPaginaTres extends AppCompatActivity implements View.OnClic
 
 
         rbA.setText(preguntaTres.getRespuestas()[0]);
-        rb2A.setText(preguntaTres.getRespuestas()[1]);
-        rb3A.setText(preguntaTres.getRespuestas()[2]);
-        rb4A.setText(preguntaTres.getRespuestas()[3]);
-        rb5A.setText(preguntaTres.getRespuestas()[4]);
-        rb6A.setText(preguntaTres.getRespuestas()[5]);
-        rb7A.setText(preguntaTres.getRespuestas()[6]);
-        rb8A.setText(preguntaTres.getRespuestas()[7]);
-        rb9A.setText(preguntaTres.getRespuestas()[8]);
+        rb1A.setText(preguntaTres.getRespuestas()[1]);
+        rb2A.setText(preguntaTres.getRespuestas()[2]);
+        rb3A.setText(preguntaTres.getRespuestas()[3]);
+        rb4A.setText(preguntaTres.getRespuestas()[4]);
+        rb5A.setText(preguntaTres.getRespuestas()[5]);
+        rb6A.setText(preguntaTres.getRespuestas()[6]);
+        rb7A.setText(preguntaTres.getRespuestas()[7]);
+        rb8A.setText(preguntaTres.getRespuestas()[8]);
+        rb9A.setText(preguntaTres.getRespuestas()[9]);
 
         rbC.setText(preguntaCuatro.getRespuestas()[0]);
         rb2C.setText(preguntaCuatro.getRespuestas()[1]);
